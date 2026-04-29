@@ -1,0 +1,18 @@
+<svg width="800" height="420" viewBox="0 0 800 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="420" rx="36" fill="#FFFDF8"/>
+  <rect x="68" y="74" width="664" height="272" rx="28" fill="white" stroke="#E4DCC8" stroke-width="3"/>
+  <line x1="118" y1="154" x2="682" y2="154" stroke="#51607D" stroke-width="4"/>
+  <line x1="118" y1="246" x2="682" y2="246" stroke="#51607D" stroke-width="4"/>
+  <rect x="214" y="126" width="78" height="56" rx="14" fill="#116466"/>
+  <text x="246" y="162" text-anchor="middle" fill="white" font-family="Avenir Next, Segoe UI, sans-serif" font-size="26" font-weight="700">H</text>
+  <line x1="390" y1="154" x2="390" y2="246" stroke="#14213D" stroke-width="4"/>
+  <circle cx="390" cy="154" r="12" fill="#14213D"/>
+  <circle cx="390" cy="246" r="22" stroke="#14213D" stroke-width="4"/>
+  <line x1="390" y1="224" x2="390" y2="268" stroke="#14213D" stroke-width="4"/>
+  <line x1="368" y1="246" x2="412" y2="246" stroke="#14213D" stroke-width="4"/>
+  <rect x="548" y="218" width="92" height="56" rx="14" fill="#FFC15E"/>
+  <text x="594" y="254" text-anchor="middle" fill="#14213D" font-family="Avenir Next, Segoe UI, sans-serif" font-size="22" font-weight="700">Measure</text>
+  <text x="96" y="160" fill="#51607D" font-family="SFMono-Regular, Consolas, monospace" font-size="22">q0</text>
+  <text x="96" y="252" fill="#51607D" font-family="SFMono-Regular, Consolas, monospace" font-size="22">q1</text>
+  <text x="96" y="108" fill="#116466" font-family="Avenir Next, Segoe UI, sans-serif" font-size="26" font-weight="700">Simple Bell-state circuit</text>
+</svg>

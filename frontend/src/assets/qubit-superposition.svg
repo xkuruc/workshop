@@ -1,0 +1,16 @@
+<svg width="800" height="420" viewBox="0 0 800 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="420" rx="36" fill="#F8FBFF"/>
+  <circle cx="245" cy="210" r="126" fill="#EAF6F5" stroke="#116466" stroke-width="4"/>
+  <line x1="119" y1="210" x2="371" y2="210" stroke="#A0B3C4" stroke-width="3"/>
+  <line x1="245" y1="84" x2="245" y2="336" stroke="#A0B3C4" stroke-width="3"/>
+  <path d="M245 210L331 135" stroke="#116466" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="331" cy="135" r="10" fill="#116466"/>
+  <path d="M245 210L188 305" stroke="#FFC15E" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="188" cy="305" r="10" fill="#FFC15E"/>
+  <path d="M430 112C430 92.1178 446.118 76 466 76H676C695.882 76 712 92.1178 712 112V308C712 327.882 695.882 344 676 344H466C446.118 344 430 327.882 430 308V112Z" fill="white" stroke="#D7E3EF" stroke-width="3"/>
+  <text x="466" y="132" fill="#116466" font-family="Avenir Next, Segoe UI, sans-serif" font-size="24" font-weight="700">Qubit state</text>
+  <text x="466" y="184" fill="#14213D" font-family="SFMono-Regular, Consolas, monospace" font-size="30">|ψ⟩ = α|0⟩ + β|1⟩</text>
+  <text x="466" y="236" fill="#51607D" font-family="Avenir Next, Segoe UI, sans-serif" font-size="22">Normalization</text>
+  <text x="466" y="276" fill="#14213D" font-family="SFMono-Regular, Consolas, monospace" font-size="28">|α|² + |β|² = 1</text>
+  <text x="164" y="73" fill="#51607D" font-family="Avenir Next, Segoe UI, sans-serif" font-size="20">Superposition direction</text>
+</svg>
