@@ -1,118 +1,110 @@
 import bellCircuitIllustration from "../../assets/qiskit-circuit.svg";
 
-
 const qiskitFirstCircuitLesson = {
-  id: "qiskit-first-circuit",
-  title: "Lekcia 2: Prvý obvod v Qiskite",
-  summary: "Praktická lekcia s editorom a jednoduchým kvantovým obvodom.",
+  id: "qubits-superposition-and-the-bloch-sphere",
+  title: "Lesson 2: Qubits, Superposition, and the Bloch Sphere",
+  summary: "An overview of one-qubit states, superposition, amplitudes, phase, and Bloch sphere intuition.",
   theory: `
 
 
- # Qubit, superpozícia a Blochova sféra
+ # Qubit, superposition, and the Bloch sphere
 
-## Základné stavy qubitu
+## Basic states of a qubit
 
-Pri qubite tieto hodnoty zapisujeme ako kvantové stavy: hodnota 0 zodpovedá stavu $|0\\rangle$ a hodnota 1 zodpovedá stavu $|1\\rangle$. 
+For a qubit, we write these values as quantum states: the value 0 corresponds to the state $|0\\rangle$ and the value 1 corresponds to the state $|1\\rangle$.
 
-Qubit však nemusí byť iba v jednom z týchto stavov. Môže byť v stave $|0\\rangle$, v stave $|1\\rangle$, alebo v ich superpozícii, teda v kombinácii oboch možností naraz. 
+A qubit does not have to be only in one of these states. It can be in the state $|0\\rangle$, in the state $|1\\rangle$, or in their superposition, meaning a combination of both possibilities at once.
 
-To znamená, že qubit pred meraním nemusí byť jednoznačne $|0\\rangle$ alebo $|1\\rangle$. Pokým ho nezmeriame správa sa akoby mal obidve hodnoty.  Jeho stav môže byť nastavený tak, že pri meraní dostaneme napríklad: s pravdepodobnosťou 50 % výsledok $|0\\rangle$ a s pravdepodobnosťou 50 % výsledok $|1\\rangle$.  
+That means that before measurement, a qubit does not have to be definitively $|0\\rangle$ or $|1\\rangle$. As long as we do not measure it, it behaves as if it had both values. Its state can be prepared so that, for example, when measured we get: a 50% probability of the result $|0\\rangle$ and a 50% probability of the result $|1\\rangle$.
 
-Ale superpozícia nemusí byť vždy len „pol na pol“. Qubit môže byť pripravený aj tak, že pri meraní dostaneme napríklad 70 % šancu na výsledok $|1\\rangle$, 30 % šancu na výsledok $|0\\rangle$, alebo prakticky akúkoľvek inú kombináciu pravdepodobností. 
-
----
-
-## Rovnaké pravdepodobnosti nemusia znamenať rovnaký stav
-
-Dôležité je, že dva qubity môžu mať rovnaké pravdepodobnosti merania ( napríklad oba dávajú 50 % pre $|0\\rangle$ a 50 % pre $|1\\rangle$, ale napriek tomu nemusia byť v rovnakom kvantovom stave – ak by sme na tieto dva qubity aplikovali úplne rovnakú kvantovú operáciu tak dostanem úplne odlišné stavy. 
-
-Konkrétne, existuje nekonečne veľa stavov, ktoré pri meraní dávajú rovnaké pravdepodobnosti 50/50, ale nie sú rovnaké.  
+But superposition does not always have to be only “half and half.” A qubit can also be prepared so that measurement gives, for example, a 70% chance of the result $|1\\rangle$, a 30% chance of the result $|0\\rangle$, or practically any other combination of probabilities.
 
 ---
 
-## Blochova sféra
+## Equal probabilities do not have to mean the same state
 
-Túto situáciu si vieme reprezentovať pomocou Blochovej sféry. Každý stav jedného qubitu môžeme zobraziť ako bod na povrchu gule. Presnejšie sa hovorí o kvantovom stavovom vektore, ktorý ukazuje na konkrétne miesto na sfére. 
+It is important to understand that two qubits can have the same measurement probabilities, for example both give 50% for $|0\\rangle$ and 50% for $|1\\rangle$, and still not be in the same quantum state. If we applied exactly the same quantum operation to these two qubits, we could get completely different resulting states.
 
-V štandardnom značení platí- severný pól reprezentuje stav $|0\\rangle$, južný pól reprezentuje stav $|1\\rangle$, body na rovníku reprezentujú superpozície, pri ktorých máme 50 % pravdepodobnosť namerať $|0\\rangle$ a 50 % pravdepodobnosť namerať $|1\\rangle$. 
-
-Ak je bod bližšie k severnému pólu, je väčšia pravdepodobnosť namerať $|0\\rangle$. Ak je bližšie k južnému pólu, je väčšia pravdepodobnosť namerať $|1\\rangle$. Pravdepodobnosť na namerania konkrétnych výsledkov je daná uhlom  medzi kvantovým stavovým vektorom a osou Z. 
-
-Body na rovníku majú rovnaké pravdepodobnosti merania, ale môžu sa líšiť uhlom okolo zvislej osi (okolo osi Z). Práve tento uhol reprezentuje fázu. Preto nestačí povedať iba „tento qubit je 50/50“. Treba vedieť aj to, aká 50/50 superpozícia to je – a to sa presne popisuje ako kvantový stavový vektor v Blochovej sfére.  
-
-
+More specifically, there are infinitely many states that give the same 50/50 probabilities when measured, but are not the same state.
 
 ---
 
-## Operácie na qubitoch
+## The Bloch sphere
 
-Operácie na qubitoch sa potom dajú veľmi pekne predstaviť ako rotácie kvantového stavového vektora okolo osí X, Y a Z. Rôzne kvantové brány teda menia polohu vektora na Blochovej sfére, a tým menia aj pravdepodobnosti alebo fázu výsledného stavu. Dôležité je znova zdôrazniť, že ten kvantový stavový vektor reprezentuje stav v ktorom sa qubit nachádza, a jeho pohyb po Blochovej sfére reprezentuje operácie nad qubitom - nejedná sa o fyzický pohyb, alebo fyzické rotácie, ale o zmenu stavu qubitu. 
+We can represent this situation using the Bloch sphere. Every one-qubit state can be shown as a point on the surface of a sphere. More precisely, we talk about a quantum state vector that points to a specific location on the sphere.
 
-Prosím, vyskúšajte si tento online nástroj na vizualizáciu Blochovej sféry: (odporúčame skopírovať URL a otvoriť vo novom okne)
+In the standard convention, the north pole represents the state $|0\\rangle$, the south pole represents the state $|1\\rangle$, and points on the equator represent superpositions for which we have a 50% probability of measuring $|0\\rangle$ and a 50% probability of measuring $|1\\rangle$.
+
+If the point is closer to the north pole, there is a greater probability of measuring $|0\\rangle$. If it is closer to the south pole, there is a greater probability of measuring $|1\\rangle$. The probability of measuring specific outcomes is determined by the angle between the quantum state vector and the Z axis.
+
+Points on the equator have the same measurement probabilities, but they can differ by the angle around the vertical axis, around the Z axis. This angle represents the phase. That is why it is not enough to say only “this qubit is 50/50.” We also need to know what kind of 50/50 superposition it is, and that is exactly what is described by the quantum state vector on the Bloch sphere.
+
+---
+
+## Operations on qubits
+
+Operations on qubits can be very nicely imagined as rotations of the quantum state vector around the X, Y, and Z axes. Different quantum gates therefore change the position of the vector on the Bloch sphere, and in that way change the probabilities or the phase of the resulting state. It is important to emphasize again that the quantum state vector represents the state the qubit is in, and its movement on the Bloch sphere represents operations on the qubit. It is not a physical movement or a physical rotation, but a change in the state of the qubit.
+
+Please try this online Bloch sphere visualization tool: we recommend copying the URL and opening it in a new window.
 
 [https://bloch.kherb.io/](https://bloch.kherb.io/)
 
+Using this tool, you can try basic quantum operations, which are displayed on the Bloch sphere as **rotations of the state vector**.
 
-Pomocou tohto nástroja si môžete skúsiť základné kvantové operácie, ktoré sa na Blochovej sfére zobrazujú ako **rotácie stavového vektora**.
+I also recommend trying rotations by your own chosen angles, not only **90°** or **180°**, but also other values. Try changing rotations around different axes, for example **X**, **Y**, and **Z**.
 
-Odporúčam vyskúšať si aj rotácie o vlastné uhly, teda nielen o **90°** alebo **180°**, ale aj o iné hodnoty. Skúste meniť rotácie okolo rôznych osí, napríklad **X**, **Y** a **Z**.
-
-Stlačením tlačidla **„+“** sa stavový vektor otočí o kladný uhol.  
-Stlačením tlačidla **„-“** sa stavový vektor otočí o záporný uhol.
-
+By pressing the **“+”** button, the state vector rotates by a positive angle.
+By pressing the **“-”** button, the state vector rotates by a negative angle.
 
 ---
 
-## Matematický zápis stavu qubitu
+## Mathematical notation of a qubit state
 
-Matematicky sa stav qubitu zapisuje ako kombinácia dvoch základných stavov:
+Mathematically, the state of a qubit is written as a combination of two basis states:
 
 $$
 ∣ψ⟩=α |0\\rangle +β|1\\rangle
 $$
 
-Tu α a β sú tzv. “amplitúdy pravdepodobnosti”- α a β sú komplexné čísla, a Pravdepodobnosť namerať $|0\\rangle$ je $∣α∣^2$ a pravdepodobnosť namerať $|1\\rangle$ je $∣β∣^2$. 
+Here, α and β are so-called **probability amplitudes**. They are complex numbers, and the probability of measuring $|0\\rangle$ is $∣α∣^2$ while the probability of measuring $|1\\rangle$ is $∣β∣^2$.
 
-A stále musí platiť že:
+And it must always hold that:
 
 $$
 ∣α∣^2 + ∣ β ∣^2 = 1
 $$
 
-lebo máme 100% šancu že nameriame $|0\\rangle$ alebo $|1\\rangle$
+because we have a 100% chance of measuring either $|0\\rangle$ or $|1\\rangle$.
 
 ---
 
+## Example
 
-## Príklad 
-
-Napríklad, 50/50 superpozíciu vieme pomocou stavového vektora zapísať takto: 
+For example, a 50/50 superposition can be written using the state vector like this:
 
 $$
 ∣ψ⟩ = \\frac{1}{\\sqrt{2}} |0\\rangle + \\frac{1}{\\sqrt{2}} |1\\rangle
 $$
 
-To znamená, že pravdepodobnosť namerať $|0\\rangle$ je: 
+That means that the probability of measuring $|0\\rangle$ is:
 
 $$
 P(|0\\rangle) = |\\frac{1}{\\sqrt{2}}|² = \\frac{1}{2} = 50 \\%
 $$
 
-a pravdepodobnosť namerať $|1\\rangle$ je tiež: 
+and the probability of measuring $|1\\rangle$ is also:
 
 $$
 P(|1\\rangle) = |\\frac{1}{\\sqrt{2}}|² = \\frac{1}{2} = 50\\%
 $$
 
-
-
-Dôležité ale je, že 50/50 superpozícia nemusí byť iba jedna. Príklad inej 50/50 superpozície s komplexným číslom: 
+However, the important point is that there is not only one 50/50 superposition. Here is an example of a different 50/50 superposition involving a complex number:
 
 $$
 ∣ψ⟩ = \\frac{1}{\\sqrt{2}} |0\\rangle - \\frac{i}{\\sqrt{2}} |1\\rangle
 $$
 
-Pravdepodobnosti sú: 
+The probabilities are:
 
 $$
 P(|0\\rangle) = |\\frac{1}{\\sqrt{2}}|² = \\frac{1}{2} = 50 \\%
@@ -122,15 +114,13 @@ $$
 P(|1\\rangle) = |-\\frac{i}{\\sqrt{2}}|² = \\frac{1}{2} = 50 \\%
 $$
 
-
-Príklad úplne iného qubitového stavu s komplexnými číslami: 
-
+An example of a completely different qubit state with complex numbers is:
 
 $$
 ∣ψ⟩ = \\frac{1+i}{2\\sqrt{2}} |0\\rangle + \\frac{i \\sqrt{3}}{2} |1\\rangle
 $$
 
-Pravdepodobnosti sú: 
+The probabilities are:
 
 $$
 P(|0\\rangle) = |\\frac{1+i}{2\\sqrt{2}}|² = 25 \\%
@@ -139,288 +129,253 @@ $$
 $$
 P(|1\\rangle) = |\\frac{i \\sqrt{3}}{2}|² = 75 \\%
 $$
-
-
-
-
-
 `,
-  images: [
-    {
-      src: bellCircuitIllustration,
-      alt: "Jednoduchý Bell-state circuit",
-      caption: "Jedna z klasických ukážok v Qiskite: Hadamard + CNOT + meranie.",
-    },
-  ],
   questions: [
-    
-  {
-    id: "q1",
-    type: "multiple-choice",
-    prompt: "Klasický bit môže nadobúdať hodnotu:",
-    options: [
-      "iba 0",
-      "iba 1",
-      "0 alebo 1",
-      "akékoľvek reálne číslo",
-    ],
-    correctAnswer: "0 alebo 1",
-    explanation: "",
-  },
-
-  {
-    id: "q2",
-    type: "multiple-choice",
-    prompt: "Qubit sa od klasického bitu líši tým, že môže byť:",
-    options: [
-      "iba v stave 0",
-      "iba v stave 1",
-      "iba vypnutý alebo zapnutý",
-      "v stave ∣0⟩, ∣1⟩, alebo v ich superpozícii",
-    ],
-    correctAnswer: "v stave ∣0⟩, ∣1⟩, alebo v ich superpozícii",
-    explanation: "",
-  },
-
-  {
-    id: "q3",
-    type: "multiple-choice",
-    prompt: "Ak je qubit v superpozícii 50/50, znamená to, že pri meraní:",
-    options: [
-      "vždy nameriame 0",
-      "vždy nameriame 1",
-      "máme 50 % šancu namerať 0 a 50 % šancu namerať 1",
-      "qubit sa nedá zmerať",
-    ],
-    correctAnswer: "máme 50 % šancu namerať 0 a 50 % šancu namerať 1",
-    explanation: "",
-  },
-
-  {
-    id: "q4",
-    type: "multiple-choice",
-    prompt: "Superpozícia qubitu môže byť:",
-    options: [
-      "iba 50/50",
-      "iba 70/30",
-      "ľubovoľná kombinácia pravdepodobností, napríklad 50/50, 70/30, 90/10",
-      "vždy rovnaká ako klasický bit",
-    ],
-    correctAnswer: "ľubovoľná kombinácia pravdepodobností, napríklad 50/50, 70/30, 90/10",
-    explanation: "",
-  },
-
-  {
-    id: "q5",
-    type: "multiple-choice",
-    prompt: "Blochova sféra slúži na:",
-    options: [
-      "meranie teploty qubitu",
-      "vizualizáciu stavu jedného qubitu",
-      "zobrazenie klasických bitov",
-      "výpočet rýchlosti svetla",
-    ],
-    correctAnswer: "vizualizáciu stavu jedného qubitu",
-    explanation: "",
-  },
-
-  {
-    id: "q6",
-    type: "multiple-choice",
-    prompt: "V štandardnom značení severný pól Blochovej sféry reprezentuje:",
-    options: [
-      "stav ∣0⟩",
-      "stav ∣1⟩",
-      "stav 50/50",
-      "neurčitý stav",
-    ],
-    correctAnswer: "stav ∣0⟩",
-    explanation: "",
-  },
-
-  {
-    id: "q7",
-    type: "multiple-choice",
-    prompt: "Južný pól Blochovej sféry reprezentuje:",
-    options: [
-      "stav ∣0⟩",
-      "stav ∣1⟩",
-      "fázu",
-      "kvantovú bránu",
-    ],
-    correctAnswer: "stav ∣1⟩",
-    explanation: "",
-  },
-
-  {
-    id: "q8",
-    type: "multiple-choice",
-    prompt: "Body na rovníku Blochovej sféry predstavujú stavy, pri ktorých:",
-    options: [
-      "vždy nameriame 0",
-      "vždy nameriame 1",
-      "máme 50 % pravdepodobnosť namerať 0 a 50 % pravdepodobnosť namerať 1",
-      "qubit prestáva existovať",
-    ],
-    correctAnswer: "máme 50 % pravdepodobnosť namerať 0 a 50 % pravdepodobnosť namerať 1",
-    explanation: "",
-  },
-
-  {
-    id: "q9",
-    type: "multiple-choice",
-    prompt: "Ak je bod na Blochovej sfére bližšie k severnému pólu, potom je väčšia pravdepodobnosť, že nameriame:",
-    options: [
-      "0",
-      "1",
-      "oboje naraz",
-      "nič",
-    ],
-    correctAnswer: "0",
-    explanation: "",
-  },
-
-  {
-    id: "q10",
-    type: "multiple-choice",
-    prompt: "Operácie na qubite sa na Blochovej sfére dajú predstaviť ako:",
-    options: [
-      "fyzická rotácia častice v priestore",
-      "rotácie vektora okolo osí X, Y a Z",
-      "zmena farby sféry",
-      "zničenie qubitu",
-    ],
-    correctAnswer: "rotácie vektora okolo osí X, Y a Z",
-    explanation: "",
-  },
-
-  {
-    id: "q11",
-    type: "short-answer",
-    prompt: "Qubit môže byť v stave ∣0⟩, ∣1⟩, alebo v ich __________.",
-    correctAnswer: ["superpozícii", "superpozicii", "superpozícia", "superpozicia"],
-    explanation: "",
-  },
-
-  {
-    id: "q12",
-    type: "short-answer",
-    prompt: "__________ sféra je geometrická reprezentácia stavu jedného qubitu.",
-    correctAnswer: ["Blochova", "blochova"],
-    explanation: "",
-  },
-
-  {
-    id: "q13",
-    type: "short-answer",
-    prompt: "Body na __________ Blochovej sféry reprezentujú superpozície s pravdepodobnosťou 50/50.",
-    correctAnswer: ["rovníku", "rovniku"],
-    explanation: "",
-  },
-
-  {
-    id: "q14",
-    type: "short-answer",
-    prompt: "Uhol okolo zvislej osi na Blochovej sfére reprezentuje kvantovú __________.",
-    correctAnswer: ["fázu", "fazu"],
-    explanation: "",
-  },
-
-  {
-    id: "q15",
-    type: "short-answer",
-    prompt: "α a β nie sú priamo pravdepodobnosti, ale amplitúdy __________.",
-    correctAnswer: ["pravdepodobnosti"],
-    explanation: "",
-  },
-
-  {
-    id: "q16",
-    type: "short-answer",
-    prompt: "Hodnoty α a β sú __________ čísla.",
-    correctAnswer: ["komplexné", "komplexne"],
-    explanation: "",
-  },
-
-  {
-    id: "q17",
-    type: "short-answer",
-    prompt: "Kvantové operácie menia stav qubitu, čo sa na Blochovej sfére zobrazuje ako __________ vektora.",
-    correctAnswer: ["rotácia", "rotacia", "rotácie", "rotacie"],
-    explanation: "",
-  },
-
-  {
-    id: "q18",
-    type: "multiple-choice",
-    prompt: "Klasický bit môže byť v superpozícii 0 a 1.",
-    options: [
-      "Pravda",
-      "Nepravda",
-    ],
-    correctAnswer: "Nepravda",
-    explanation: "",
-  },
-
-  {
-    id: "q19",
-    type: "multiple-choice",
-    prompt: "Qubit môže mať pri meraní 70 % šancu na výsledok 1 a 30 % šancu na výsledok 0.",
-    options: [
-      "Pravda",
-      "Nepravda",
-    ],
-    correctAnswer: "Pravda",
-    explanation: "",
-  },
-
-  {
-    id: "q20",
-    type: "multiple-choice",
-    prompt: "Dva qubitové stavy s rovnakými pravdepodobnosťami merania musia byť vždy rovnaké.",
-    options: [
-      "Pravda",
-      "Nepravda",
-    ],
-    correctAnswer: "Nepravda",
-    explanation: "",
-  },
-
-  {
-    id: "q21",
-    type: "multiple-choice",
-    prompt: "Na rovníku Blochovej sféry sú všetky stavy z pohľadu pravdepodobností merania 0/1 typu 50/50.",
-    options: [
-      "Pravda",
-      "Nepravda",
-    ],
-    correctAnswer: "Pravda",
-    explanation: "",
-  },
-
-  {
-    id: "q22",
-    type: "multiple-choice",
-    prompt: "Pohyb vektora po Blochovej sfére znamená fyzický pohyb qubitu v priestore.",
-    options: [
-      "Pravda",
-      "Nepravda",
-    ],
-    correctAnswer: "Nepravda",
-    explanation: "",
-  },
-
-  {
-    id: "q23",
-    type: "multiple-choice",
-    prompt: "Kvantové operácie môžu meniť pravdepodobnosti výsledku qubitu.",
-    options: [
-      "Pravda",
-      "Nepravda",
-    ],
-    correctAnswer: "Pravda",
-    explanation: "",
-  },
+    // {
+    //   id: "q1",
+    //   type: "multiple-choice",
+    //   prompt: "A classical bit can take the value:",
+    //   options: [
+    //     "only 0",
+    //     "only 1",
+    //     "0 or 1",
+    //     "any real number",
+    //   ],
+    //   correctAnswer: "0 or 1",
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q2",
+    //   type: "multiple-choice",
+    //   prompt: "A qubit differs from a classical bit because it can be:",
+    //   options: [
+    //     "only in the state 0",
+    //     "only in the state 1",
+    //     "only off or on",
+    //     "in the state ∣0⟩, ∣1⟩, or in their superposition",
+    //   ],
+    //   correctAnswer: "in the state ∣0⟩, ∣1⟩, or in their superposition",
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q3",
+    //   type: "multiple-choice",
+    //   prompt: "If a qubit is in a 50/50 superposition, this means that when measured:",
+    //   options: [
+    //     "we always measure 0",
+    //     "we always measure 1",
+    //     "there is a 50% chance to measure 0 and a 50% chance to measure 1",
+    //     "the qubit cannot be measured",
+    //   ],
+    //   correctAnswer: "there is a 50% chance to measure 0 and a 50% chance to measure 1",
+    //   explanation: "",
+    // },
+    {
+      id: "q4",
+      type: "multiple-choice",
+      prompt: "The superposition of a qubit can be:",
+      options: [
+        "only 50/50",
+        "only 70/30",
+        "any combination of probabilities, such as 50/50, 70/30, or 90/10",
+        "always the same as a classical bit",
+      ],
+      correctAnswer: "any combination of probabilities, such as 50/50, 70/30, or 90/10",
+      explanation: "",
+    },
+    {
+      id: "q5",
+      type: "multiple-choice",
+      prompt: "The Bloch sphere is used for:",
+      options: [
+        "measuring the temperature of a qubit",
+        "visualizing the state of a single qubit",
+        "displaying classical bits",
+        "calculating the speed of light",
+      ],
+      correctAnswer: "visualizing the state of a single qubit",
+      explanation: "",
+    },
+    {
+      id: "q6",
+      type: "multiple-choice",
+      prompt: "In the standard convention, the north pole of the Bloch sphere represents:",
+      options: [
+        "the state ∣0⟩",
+        "the state ∣1⟩",
+        "a 50/50 state",
+        "an undefined state",
+      ],
+      correctAnswer: "the state ∣0⟩",
+      explanation: "",
+    },
+    // {
+    //   id: "q7",
+    //   type: "multiple-choice",
+    //   prompt: "The south pole of the Bloch sphere represents:",
+    //   options: [
+    //     "the state ∣0⟩",
+    //     "the state ∣1⟩",
+    //     "phase",
+    //     "a quantum gate",
+    //   ],
+    //   correctAnswer: "the state ∣1⟩",
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q8",
+    //   type: "multiple-choice",
+    //   prompt: "Points on the equator of the Bloch sphere represent states for which:",
+    //   options: [
+    //     "we always measure 0",
+    //     "we always measure 1",
+    //     "there is a 50% probability of measuring 0 and a 50% probability of measuring 1",
+    //     "the qubit stops existing",
+    //   ],
+    //   correctAnswer: "there is a 50% probability of measuring 0 and a 50% probability of measuring 1",
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q9",
+    //   type: "multiple-choice",
+    //   prompt: "If a point on the Bloch sphere is closer to the north pole, then it is more likely that we will measure:",
+    //   options: [
+    //     "0",
+    //     "1",
+    //     "both at once",
+    //     "nothing",
+    //   ],
+    //   correctAnswer: "0",
+    //   explanation: "",
+    // },
+    {
+      id: "q10",
+      type: "multiple-choice",
+      prompt: "Operations on a qubit can be represented on the Bloch sphere as:",
+      options: [
+        "a physical rotation of a particle in space",
+        "rotations of the vector around the X, Y, and Z axes",
+        "a change in the color of the sphere",
+        "the destruction of the qubit",
+      ],
+      correctAnswer: "rotations of the vector around the X, Y, and Z axes",
+      explanation: "",
+    },
+    // {
+    //   id: "q11",
+    //   type: "short-answer",
+    //   prompt: "A qubit can be in the state ∣0⟩, ∣1⟩, or in their __________.",
+    //   correctAnswer: ["superposition"],
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q12",
+    //   type: "short-answer",
+    //   prompt: "The __________ sphere is a geometric representation of the state of a single qubit.",
+    //   correctAnswer: ["bloch"],
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q13",
+    //   type: "short-answer",
+    //   prompt: "Points on the __________ of the Bloch sphere represent 50/50 superpositions.",
+    //   correctAnswer: ["equator"],
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q14",
+    //   type: "short-answer",
+    //   prompt: "The angle around the vertical axis on the Bloch sphere represents the quantum __________.",
+    //   correctAnswer: ["phase"],
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q15",
+    //   type: "short-answer",
+    //   prompt: "α and β are not directly probabilities, but probability __________.",
+    //   correctAnswer: ["amplitudes", "amplitude"],
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q16",
+    //   type: "short-answer",
+    //   prompt: "The values α and β are __________ numbers.",
+    //   correctAnswer: ["complex"],
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q17",
+    //   type: "short-answer",
+    //   prompt: "Quantum operations change the state of a qubit, which is shown on the Bloch sphere as a __________ of the vector.",
+    //   correctAnswer: ["rotation", "rotations"],
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q18",
+    //   type: "multiple-choice",
+    //   prompt: "A classical bit can be in a superposition of 0 and 1.",
+    //   options: [
+    //     "True",
+    //     "False",
+    //   ],
+    //   correctAnswer: "False",
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q19",
+    //   type: "multiple-choice",
+    //   prompt: "A qubit can have a 70% chance of giving the result 1 and a 30% chance of giving the result 0 when measured.",
+    //   options: [
+    //     "True",
+    //     "False",
+    //   ],
+    //   correctAnswer: "True",
+    //   explanation: "",
+    // },
+    {
+      id: "q20",
+      type: "multiple-choice",
+      prompt: "Two qubit states with the same measurement probabilities must always be identical.",
+      options: [
+        "True",
+        "False",
+      ],
+      correctAnswer: "False",
+      explanation: "",
+    },
+    // {
+    //   id: "q21",
+    //   type: "multiple-choice",
+    //   prompt: "On the equator of the Bloch sphere, all states are 50/50 in terms of measurement probabilities for 0 and 1.",
+    //   options: [
+    //     "True",
+    //     "False",
+    //   ],
+    //   correctAnswer: "True",
+    //   explanation: "",
+    // },
+    {
+      id: "q22",
+      type: "multiple-choice",
+      prompt: "The movement of the vector on the Bloch sphere means the physical motion of the qubit in space.",
+      options: [
+        "True",
+        "False",
+      ],
+      correctAnswer: "False",
+      explanation: "",
+    },
+    // {
+    //   id: "q23",
+    //   type: "multiple-choice",
+    //   prompt: "Quantum operations can change the probabilities of a qubit's outcomes.",
+    //   options: [
+    //     "True",
+    //     "False",
+    //   ],
+    //   correctAnswer: "True",
+    //   explanation: "",
+    // },
   ],
   showEditor: false,
   starterCode: `import sys
@@ -439,6 +394,5 @@ except Exception as error:
     print("Qiskit import failed:", error)
 `,
 };
-
 
 export default qiskitFirstCircuitLesson;

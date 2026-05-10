@@ -89,6 +89,11 @@ img {
   font-size: 1.02rem;
 }
 
+.hero-warning {
+  color: var(--danger);
+  font-weight: 600;
+}
+
 .workshop-main {
   display: grid;
   gap: 24px;

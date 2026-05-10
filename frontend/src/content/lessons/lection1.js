@@ -1,240 +1,209 @@
 import qubitIllustration from "../../assets/qubit-superposition.svg";
 
-
 const qubitFoundationsLesson = {
-  id: "qubit-foundations",
-  title: "Lekcia 1: Základy qubitu",
-  summary: "bla bla bla.",
+  id: "quantum-computing-fundamentals",
+  title: "Lesson 1: Quantum Computing Fundamentals",
+  summary: "An introduction to quantum computing, qubits, superposition, entanglement, and measurement.",
   theory: `
 
 
 # Quantum computing
 
-## Základná definícia
+## Basic definition
 
-**Quantum computing**, je výpočtový prístup založený na princípoch kvantovej mechaniky.  
+**Quantum computing** is a computational approach based on the principles of quantum mechanics.
 
-Klasický počítač pracuje s bitmi, ktoré môžu nadobúdať hodnotu **0 alebo 1**. Kvantový počítač používa na výpočty kvantové častice, ktoré sa správajú podľa kvantovej fyziky, čo nám umožňuje robiť výpočty pomocou kvantovej mechaniky. V kvantovom počítaní sa využíva viacero kvantových javov, no medzi najdôležitejšie patria **superpozícia** a **entanglement**.  
+A classical computer works with bits, which can take the value **0 or 1**. A quantum computer uses quantum particles for computation, and these particles behave according to quantum physics, which allows us to perform calculations using quantum mechanics. Quantum computing relies on several quantum phenomena, but two of the most important are **superposition** and **entanglement**.
 
 ---
 
-## Superpozícia a qubity
+## Superposition and qubits
 
-**Superpozícia** = je jav, kedy sa kvantový systém nenachádza iba v jednom presne určenom stave, ale vo viacerých stavoch naraz. (napr. jedna kvantová častica môže byť na viacerých miestach naraz, môže mať viacero hodnôt energií a pod.).  
+**Superposition** is the phenomenon in which a quantum system is not in only one precisely determined state, but in multiple states at the same time. For example, a quantum particle can be in several places at once, can have multiple energy values, and so on.
 
-V Quantum computingu to využívame na vytvorenie **Qubitu**.  
+In quantum computing, we use this to create a **qubit**.
+
+**Qubit** = quantum bit. A qubit can behave as if it contains both 0 and 1 at the same time. That means a quantum computer does not have to work with only one specific combination of zeros and ones during a computation, but can work with multiple possible combinations at once.
+
+If we have 1 qubit, it can represent both 0 and 1. If we have 2 qubits, they can represent 00, 01, 10, and 11 at the same time, which is a total of 4 possibilities. In general, if we have N qubits, a quantum computer can work with $2^N$ possible combinations of zeros and ones at once.
+
+> **The computational power of a quantum computer grows exponentially with each added qubit.**
+
+For comparison, only **280 qubits** would be enough to work with more numbers than there are atoms in the observable universe.
 
 
-
-**Qubit** = kvantový bit. Qubit sa môže správať tak, akoby obsahoval 0 aj 1 naraz. To znamená, že kvantový počítač nemusí pri výpočte pracovať iba s jednou konkrétnou kombináciou núl a jednotiek, ale vie naraz pracovať s viacerými možnými kombináciami.
-
-Ak máme 1 qubit, vieme ním reprezentovať možnosti 0 aj 1. Ak máme 2 qubity, vieme naraz reprezentovať kombinácie 00, 01, 10, 11 - spolu 4 možnosti. Všeobecne platí, že ak máme N qubitov, kvantový počítač vie pracovať s 2^N možnými kombináciami núl a jednotiek naraz.
-
-> **Výpočtová sila kvantového počítača rastie exponenciálne so každým pridaným qubitom.**
-
-Pre porovnanie, stačilo by nám iba **280 qubitov**, aby sme vedeli pracovať so viac číslami ako je atómov vo pozorovateľnom vesmíre.  
 
 ---
 
 ## Entanglement
 
-**Entanglement** = je jav, kedy stav jedného qubitu ovplyvní stav na druhom qubite, bez priamej fyzickej interakcie. Jednoducho povedané: ak máme dva previazané qubity, nemôžeme ich chápať ako dva úplne nezávislé bity. Ich hodnoty sú medzi sebou prepojené.
-Napríklad môžem previazať dva qubity tak, aby mali rovnakú hodnotu - ak prvý bude mat hodnotu **1** tak aj druhý bude mat hodnotu **1**. Ak  prvý bude mať hodnotu **0** tak aj druhý mať hodnotu **0**.
-Správajú sa ako jeden spoločný systém.
+**Entanglement** is the phenomenon in which the state of one qubit affects the state of another qubit without direct physical interaction. Put simply, if we have two entangled qubits, we cannot think of them as two completely independent bits. Their values are linked to each other.
+For example, I can entangle two qubits so that they always have the same value. If the first one has the value **1**, then the second one will also have the value **1**. If the first one has the value **0**, then the second one will also have the value **0**.
+They behave like one shared system.
 
-Tento jav nazval Einstein ako **“Spooky action at the distance”**, pretože sa zdalo že informácia vie cestovať  rýchlejšie ako svetlo (v podstate okamžite).  
+Einstein referred to this phenomenon as **“spooky action at a distance”**, because it seemed as if information could travel faster than light, essentially instantly.
 
-Za formálne dokázanie tohto javu sa v roku **2022** udelila **Nobelová cena za fyziku**.  
-
----
-
-## Efekt merania
-
-**Efekt merania** v kvantovej mechanike meranie zásadne ovplyvňuje stav systému.  
-
-Pokiaľ qubit nemeriame, môže sa nachádzať v superpozícii stavov **0 a 1** a spolu s ďalšími qubitmi vytvárať zložitý kvantový stav, ktorý kvantový algoritmus využíva na výpočty.  
-
-Ak by sme ale systém zmerali (pozreli sa so akými hodnotami pracuje) celý kvantový systém sa zničí, (“skolabuje”) a nameriame iba jednu možnosť zo všetkých superpozícií - napríklad číslo **10111** ak by sme mali **5 qubitov**.  
-
-Dôležité je, že pri entanglemente meranie jedného qubitu ovplyvní to, ako môžeme opísať druhý qubit, s ktorým je previazaný. Neznamená to, že by sme mu priamo nastavili hodnotu 0 alebo 1, ale že výsledok merania prvého qubitu zmení pravdepodobnosti výsledkov, ktoré môžeme dostať pri meraní druhého qubitu.  
+The **2022 Nobel Prize in Physics** was awarded for the formal demonstration of this phenomenon.
 
 ---
 
-## Zjednodušené prirovnanie ku klasickému počítaču
+## The effect of measurement
 
-Veľmi zjednodušene si to môžeme predstaviť ako snahu pozrieť sa do registra počas výpočtu.  
+In quantum mechanics, **measurement** fundamentally affects the state of the system.
 
-V klasickom počítači by obyčajné \`print(x)\` hodnotu iba zobrazilo a výpočet by tým nezmenilo.  
+As long as we do not measure a qubit, it can remain in a superposition of the states **0 and 1**, and together with other qubits it can form a complex quantum state that a quantum algorithm uses for computation.
 
-V kvantovom počítači je však meranie aktívny zásah do systému: qubit prestane byť v superpozícii a zredukuje sa na jednu nameranú hodnotu.  
+However, if we measure the system, in other words if we look at the values it is working with, the whole quantum system is destroyed, or **collapses**, and we observe only one possibility out of all the superpositions. For example, we might measure the number **10111** if we had **5 qubits**.
 
-Ak bol previazaný s ďalšími qubitmi, meranie zmení aj spoločný kvantový stav celej previazanosti. 
+It is important to note that in the case of entanglement, measuring one qubit affects how we can describe the other qubit with which it is entangled. This does not mean that we directly set it to 0 or 1, but rather that the result of measuring the first qubit changes the probabilities of the outcomes we can get when measuring the second qubit.
 
 ---
 
-## Čo kvantový počítač nie je
+## A simplified comparison with a classical computer
 
-Dôležité je zdôrazniť, že **kvantový počítač nie je iba rýchlejšia verzia bežného počítača**.  
+Very roughly, we can imagine this as trying to look inside a register during computation.
 
-Nie je primárne určený na efektívnejšie spúšťanie bežných aplikácií, operačných systémov alebo webových služieb.  
+In a classical computer, a simple \`print(x)\` would only display the value and would not change the computation.
 
-Jeho význam spočíva v tom, že pri určitých špecifických triedach problémov dokáže využiť kvantové javy spôsobom, ktorý je pre klasické počítače extrémne náročný alebo prakticky nedosiahnuteľný.  
+In a quantum computer, however, measurement is an active intervention in the system: the qubit stops being in superposition and is reduced to one measured value.
 
-> Kvantové počítanie preto predstavuje **odlišný výpočtový model**, nie univerzálne zrýchlenie všetkého.
+If it was entangled with other qubits, the measurement also changes the shared quantum state of the entire entangled system.
 
-Hoci kvantový počítač je teoreticky výpočtovo ekvivalentný klasickému Turingovmu stroju, teda vie realizovať všeobecný výpočet, neznamená to, že bude pri každej úlohe rýchlejší.  
+---
 
-Výhoda kvantových počítačov sa očakáva najmä pri úlohách, ako sú **simulácie kvantových systémov**,  **optimalizačné problémy** alebo špecifické algoritmy, napríklad **Shorov algoritmus na faktorizáciu**.
+## What a quantum computer is not
 
+It is important to emphasize that a **quantum computer is not just a faster version of an ordinary computer**.
 
+It is not primarily intended for running regular applications, operating systems, or web services more efficiently.
 
+Its significance lies in the fact that for certain specific classes of problems, it can use quantum phenomena in a way that is extremely difficult or practically unreachable for classical computers.
 
-Na konci tejto lekcie si skús všimnúť, že superpozícia ešte nie je meranie. Meranie nastane až vtedy, keď stav **pozorujeme**.
+> Quantum computing therefore represents a **different computational model**, not a universal speedup for everything.
+
+Although a quantum computer is theoretically computationally equivalent to a classical Turing machine, meaning it can perform general computation, that does not mean it will be faster for every task.
+
+The advantage of quantum computers is expected mainly in areas such as **simulations of quantum systems**, **optimization problems**, or specific algorithms such as **Shor’s factoring algorithm**.
+
+At the end of this lesson, try to notice that superposition is not the same as measurement. Measurement happens only when we **observe** the state.
 `,
   questions: [
     {
       id: "q1",
       type: "multiple-choice",
-      prompt: "Čím sa najzásadnejšie líši klasický bit od qubitu?",
+      prompt: "What is the most important difference between a classical bit and a qubit?",
       options: [
-        "Bit môže mať viacero hodnôt naraz, qubit iba jednu",
-        "Bit je vždy fyzická častica, qubit je iba matematická hodnota ",
-        "Bit má hodnotu 0 alebo 1, zatiaľ čo qubit môže byť v superpozícii stavov 0 a 1",
-        "Qubit je iba rýchlejší typ klasického bitu",
+        "A bit can hold multiple values at once, while a qubit can hold only one",
+        "A bit is always a physical particle, while a qubit is only a mathematical value",
+        "A bit has the value 0 or 1, while a qubit can be in a superposition of 0 and 1",
+        "A qubit is only a faster type of classical bit",
       ],
-      correctAnswer: "Bit má hodnotu 0 alebo 1, zatiaľ čo qubit môže byť v superpozícii stavov 0 a 1",
+      correctAnswer: "A bit has the value 0 or 1, while a qubit can be in a superposition of 0 and 1",
       explanation: "",
     },
-
-    {
-      id: "q2",
-      type: "short-answer",
-      prompt: "Jav, pri ktorom sa kvantový systém nenachádza iba v jednom presne určenom stave, ale v kombinácii viacerých stavov naraz, sa nazýva ________",
-
-      correctAnswer: ["superpozicia"],
-      explanation: "",
-    },
-
-
+    // {
+    //   id: "q2",
+    //   type: "short-answer",
+    //   prompt: "The phenomenon in which a quantum system is not only in one precisely determined state, but in a combination of multiple states at once, is called ________.",
+    //   correctAnswer: ["superposition"],
+    //   explanation: "",
+    // },
     {
       id: "q3",
       type: "multiple-choice",
-      prompt: "Ktoré dva kvantové javy sú v texte označené ako najdôležitejšie pre kvantové výpočty? ",
+      prompt: "Which two quantum phenomena are described in the text as the most important for quantum computation?",
       options: [
-        "Gravitácia a elektromagnetizmus",
-        "Superpozícia a entanglement",
-        "Rádioaktivita a fúzia",
-        "Dekoherencia a termodynamika ",
+        "Gravity and electromagnetism",
+        "Superposition and entanglement",
+        "Radioactivity and fusion",
+        "Decoherence and thermodynamics",
       ],
-      correctAnswer: "Superpozícia a entanglement",
+      correctAnswer: "Superposition and entanglement",
       explanation: "",
     },
-
-    {
-      id: "q4",
-      type: "short-answer",
-      prompt: "Kvantový bit sa nazýva __________.",
-
-      correctAnswer: ["qubit"],
-      explanation: "",
-    },
-
-
+    // {
+    //   id: "q4",
+    //   type: "short-answer",
+    //   prompt: "A quantum bit is called a __________.",
+    //   correctAnswer: ["qubit"],
+    //   explanation: "",
+    // },
     {
       id: "q5",
       type: "multiple-choice",
-      prompt: "Čo sa stane pri meraní qubitu v superpozícii?",
+      prompt: "What happens when a qubit in superposition is measured?",
       options: [
-        "Qubit zostane vo všetkých stavoch naraz ",
-        "Qubit sa zredukuje na jednu nameranú hodnotu",
-        "Qubit vráti všetky hodnoty naraz",
-        "Qubit začne prenášať informáciu rýchlejšie ako svetlo",
+        "The qubit remains in all states at once",
+        "The qubit is reduced to one measured value",
+        "The qubit returns all values at once",
+        "The qubit starts transferring information faster than light",
       ],
-      correctAnswer: "Qubit sa zredukuje na jednu nameranú hodnotu",
+      correctAnswer: "The qubit is reduced to one measured value",
       explanation: "",
     },
-
     {
       id: "q6",
       type: "multiple-choice",
-      prompt: "Čo znamená entanglement?",
+      prompt: "What does entanglement mean?",
       options: [
-        "Jav, pri ktorom qubit stratí všetku energiu ",
-        "Jav, pri ktorom stav jedného qubity ovplyvní druhý qubit",
-        "Proces, pri ktorom sa kvantový počítač mení na klasický",
-        "Metóda chladenia kvantového procesora ",
+        "A phenomenon in which a qubit loses all of its energy",
+        "A phenomenon in which the state of one qubit affects another qubit",
+        "A process in which a quantum computer turns into a classical one",
+        "A method for cooling a quantum processor",
       ],
-      correctAnswer: "Jav, pri ktorom stav jedného qubity ovplyvní druhý qubit",
+      correctAnswer: "A phenomenon in which the state of one qubit affects another qubit",
       explanation: "",
     },
-
-    {
-      id: "q7",
-      type: "short-answer",
-      prompt: "Pri meraní sa superpozícia často opisuje tak, že kvantový stav s__________.",
-
-      correctAnswer: ["skolabuje "],
-      explanation: "",
-    },
-
+    // {
+    //   id: "q7",
+    //   type: "short-answer",
+    //   prompt: "During measurement, superposition is often described by saying that the quantum state __________.",
+    //   correctAnswer: ["collapses", "collapse"],
+    //   explanation: "",
+    // },
     {
       id: "q8",
       type: "multiple-choice",
-      prompt: "Prečo sa kvantové výpočty robia pred meraním a nie po ňom?",
+      prompt: "Why are quantum computations performed before measurement rather than after it?",
       options: [
-        "Pretože po meraní už qubit nemôže byť v pôvodnej superpozíci",
-        "Pretože kvantový počítač po meraní prestane existovať",
-        "Pretože meranie vždy vráti všetky možné výsledky naraz ",
-        "Pretože meranie je možné iba na klasických bitoch ",
+        "Because after measurement the qubit can no longer remain in its original superposition",
+        "Because a quantum computer stops existing after measurement",
+        "Because measurement always returns all possible results at once",
+        "Because measurement is possible only on classical bits",
       ],
-      correctAnswer: "Pretože po meraní už qubit nemôže byť v pôvodnej superpozíci",
+      correctAnswer: "Because after measurement the qubit can no longer remain in its original superposition",
       explanation: "",
     },
-
     {
       id: "q9",
       type: "multiple-choice",
-      prompt: "Kvantový počítač je zaujímavý hlavne preto, že: ",
+      prompt: "A quantum computer is especially interesting mainly because it:",
       options: [
-        "Zrýchli všetky bežné aplikácie",
-        "Nahradí operačné systémy ",
-        "Vie pri určitých typoch problémov využiť kvantové javy na efektívnejšie výpočty než klasický počítač",
-        "Funguje bez fyzikálnych zákonov",
+        "Speeds up all ordinary applications",
+        "Replaces operating systems",
+        "Can use quantum phenomena for more efficient computation than a classical computer on certain types of problems",
+        "Works without physical laws",
       ],
-      correctAnswer: "Vie pri určitých typoch problémov využiť kvantové javy na efektívnejšie výpočty než klasický počítač",
+      correctAnswer: "Can use quantum phenomena for more efficient computation than a classical computer on certain types of problems",
       explanation: "",
     },
-
-
     {
       id: "q10",
       type: "multiple-choice",
-      prompt: "Ktoré tvrdenie je chyták a je nesprávne?",
+      prompt: "Which statement is the trick answer and is incorrect?",
       options: [
-        "Kvantový počítač nie je univerzálne rýchlejší vo všetkom ",
-        "Kvantový počítač môže byť výhodný pri špecifických algoritmoch ",
-        "Kvantový počítač je iba výkonnejšia verzia klasického počítača na bežné aplikácie",
-        "Kvantový počítač využíva javy kvantovej mechaniky",
+        "A quantum computer is not universally faster at everything",
+        "A quantum computer can be advantageous for specific algorithms",
+        "A quantum computer is only a more powerful version of a classical computer for regular applications",
+        "A quantum computer uses phenomena from quantum mechanics",
       ],
-      correctAnswer: "Kvantový počítač je iba výkonnejšia verzia klasického počítača na bežné aplikácie",
+      correctAnswer: "A quantum computer is only a more powerful version of a classical computer for regular applications",
       explanation: "",
     },
-
-
-
-
-
-
-
-
-
-
-
-    
     {
       id: "normalization",
       type: "multiple-choice",
-      prompt: "Ktorá rovnica musí platiť pre platný stav jedného qubitu?",
+      prompt: "Which equation must hold for a valid one-qubit state?",
       options: [
         "|α|² + |β|² = 1",
         "|α| + |β| = 1",
@@ -242,19 +211,18 @@ Na konci tejto lekcie si skús všimnúť, že superpozícia ešte nie je merani
         "|α|² - |β|² = 1",
       ],
       correctAnswer: "|α|² + |β|² = 1",
-      explanation: "Normalizácia zaručuje, že súčet pravdepodobností všetkých výsledkov je rovný 1.",
+      explanation: "Normalization guarantees that the total probability of all outcomes is equal to 1.",
     },
-    {
-      id: "superposition-word",
-      type: "short-answer",
-      prompt: "Ako nazývame stav, keď qubit obsahuje kombináciu \\(|0\\rangle\\) a \\(|1\\rangle\\)?",
-      correctAnswer: ["superpozicia", "superpozícia"],
-      explanation: "Správny pojem je **superpozícia**.",
-      placeholder: "Napíš krátku odpoveď",
-    },
+    // {
+    //   id: "superposition-word",
+    //   type: "short-answer",
+    //   prompt: "What do we call the state in which a qubit contains a combination of \\(|0\\rangle\\) and \\(|1\\rangle\\)?",
+    //   correctAnswer: ["superposition"],
+    //   explanation: "The correct term is **superposition**.",
+    //   placeholder: "Write a short answer",
+    // },
   ],
   showEditor: false,
 };
-
 
 export default qubitFoundationsLesson;

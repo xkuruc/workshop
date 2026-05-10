@@ -21,9 +21,9 @@ export default function LessonQuestions({ lesson, answers, onAnswerChange }) {
   return (
     <section className="panel lesson-panel">
       <div className="panel-header">
-        <h2>Otázky</h2>
+        <h2>Questions</h2>
         <span className="lesson-question-summary">
-          Správne {stats.correct} / {stats.total}
+          Correct {stats.correct} / {stats.total}
         </span>
       </div>
 
@@ -39,15 +39,15 @@ export default function LessonQuestions({ lesson, answers, onAnswerChange }) {
           return (
             <article key={question.id} className="question-card">
               <div className="question-header">
-                <span className="question-index">Otázka {index + 1}</span>
+                <span className="question-index">Question {index + 1}</span>
                 {isDirtyShortAnswer ? (
-                  <span className="question-status pending">Stlač Enter na vyhodnotenie</span>
+                  <span className="question-status pending">Press Enter to submit</span>
                 ) : answered ? (
                   <span className={`question-status ${isCorrect ? "correct" : "incorrect"}`}>
-                    {isCorrect ? "Správne" : "Nesprávne"}
+                    {isCorrect ? "Correct" : "Incorrect"}
                   </span>
                 ) : (
-                  <span className="question-status pending">Čaká na odpoveď</span>
+                  <span className="question-status pending">Waiting for an answer</span>
                 )}
               </div>
 
@@ -74,7 +74,7 @@ export default function LessonQuestions({ lesson, answers, onAnswerChange }) {
                 </div>
               ) : (
                 <label className="field">
-                  <span className="visually-hidden">Krátka odpoveď</span>
+                  <span className="visually-hidden">Short answer</span>
                   <input
                     type="text"
                     value={draftAnswer}
@@ -92,7 +92,7 @@ export default function LessonQuestions({ lesson, answers, onAnswerChange }) {
                       event.preventDefault();
                       onAnswerChange(question.id, draftAnswer);
                     }}
-                    placeholder={question.placeholder || "Napíš odpoveď"}
+                    placeholder={question.placeholder || "Write your answer"}
                   />
                 </label>
               )}
@@ -101,7 +101,7 @@ export default function LessonQuestions({ lesson, answers, onAnswerChange }) {
                 <div className={`question-feedback ${isCorrect ? "correct" : "incorrect"}`}>
                   {isShortAnswer && !isCorrect ? (
                     <p className="question-correct-answer">
-                      <strong>Správna odpoveď:</strong> {getDisplayCorrectAnswer(question)}
+                      <strong>Correct answer:</strong> {getDisplayCorrectAnswer(question)}
                     </p>
                   ) : null}
                   {question.explanation ? <LessonMarkdown content={question.explanation} /> : null}

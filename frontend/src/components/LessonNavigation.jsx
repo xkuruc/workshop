@@ -13,12 +13,12 @@ export default function LessonNavigation({
   return (
     <section className="panel lesson-navigation-panel">
       <div>
-        <p className="lesson-navigation-label">Navigácia</p>
+        <p className="lesson-navigation-label">Navigation</p>
         <h2 className="lesson-navigation-title">{currentLesson.title}</h2>
         <p className="lesson-navigation-copy">
           {isLastLesson
-            ? "Si na poslednej lekcii workshopu."
-            : `Ďalšia zastávka: ${nextLesson.title}`}
+            ? "You are on the final lesson of the workshop."
+            : `Next stop: ${nextLesson.title}`}
         </p>
       </div>
 
@@ -29,7 +29,7 @@ export default function LessonNavigation({
           onClick={onPrevious}
           disabled={isFirstLesson || navigationDisabled}
         >
-          Predchádzajúca lekcia
+          Previous lesson
         </button>
         <button
           type="button"
@@ -37,7 +37,7 @@ export default function LessonNavigation({
           onClick={onNext}
           disabled={isLastLesson || navigationDisabled}
         >
-          {isLastLesson ? "Koniec workshopu" : "Ďalšia lekcia"}
+          {isLastLesson ? "End of workshop" : "Next lesson"}
         </button>
       </div>
     </section>

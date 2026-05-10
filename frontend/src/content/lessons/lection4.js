@@ -6,86 +6,84 @@ import c4 from "../../assets/c4.png";
 import c5 from "../../assets/c5.png";
 import c6 from "../../assets/c6.png";
 
-
 const qiskitFirstCircuitLesson = {
-  id: "qiskit-first-circuit",
-  title: "Lekcia 2: Prvý obvod v Qiskite",
-  summary: "Praktická lekcia s editorom a jednoduchým kvantovým obvodom.",
+  id: "quantum-circuit",
+  title: "Lesson 4: Quantum Circuits",
+  summary: "A clear introduction to reading quantum circuits, measurement, registers, and entanglement diagrams.",
   theory: `
 
 
-# Kvantový obvod
+# Quantum circuit
 
-Doteraz sme si vysvetlili, čo je qubit, kvantový stav a kvantová brána.
+So far, we have explained what a qubit, a quantum state, and a quantum gate are.
 
-Teraz si ukážeme, ako z týchto prvkov skladáme celý **kvantový výpočet**.
+Now we will show how we combine these elements into a complete **quantum computation**.
 
-Takýto výpočet zapisujeme pomocou **kvantového obvodu**, po anglicky **quantum circuit**.
-
----
-
-## Čo je kvantový obvod?
-
-**Kvantový obvod** je postupnosť kvantových operácií aplikovaných na qubity.
-
-Kvantový obvod nám hovorí:
-
-- s akými qubitmi začíname,
-- aké kvantové brány aplikujeme na konkrétné qubity,
-- v akom poradí ich aplikujeme,
-- kedy qubity meriame,
-- aký klasický výsledok získame.
-
-Kvantový obvod si môžeme predstaviť ako **recept na kvantový výpočet**.
-
-Nie je to elektrický obvod v klasickom zmysle. **Je to diagram, ktorý opisuje, ako sa kvantový stav mení počas výpočtu**.
+We write such a computation using a **quantum circuit**.
 
 ---
 
-## Ako čítame kvantový obvod?
+## What is a quantum circuit?
 
-Kvantový obvod čítame **zľava doprava**.
+A **quantum circuit** is a sequence of quantum operations applied to qubits.
 
-Naľavo máme počiatočné stavy qubitov. Smerom doprava aplikujeme kvantové brány. Na konci obvodu qubity zmeriame.
+A quantum circuit tells us:
 
-Napríklad:
+- which qubits we start with,
+- which quantum gates we apply to specific qubits,
+- in what order we apply them,
+- when we measure the qubits,
+- and what classical result we obtain.
 
-![Môj obrázok](${c1})
+We can think of a quantum circuit as a **recipe for quantum computation**.
 
-Tento obvod znamená:
-
-1. začíname so stavom $|0\\rangle$,
-2. aplikujeme bránu **Hadamard**,
-3. potom aplikujeme bránu **X**,
-4. nakoniec qubit zmeriame.
-
-Poradie brán je veľmi dôležité, pretože iné poradie môže viesť k inému výslednému stavu.
+It is not an electrical circuit in the classical sense. **It is a diagram that describes how the quantum state changes during computation**.
 
 ---
 
-## Qubitové vodiče
+## How do we read a quantum circuit?
 
-Každý qubit má v obvode svoju vodorovnú čiaru.
+We read a quantum circuit **from left to right**.
 
-Napríklad obvod s dvoma qubitmi môže vyzerať takto:
+On the left, we have the initial states of the qubits. Moving to the right, we apply quantum gates. At the end of the circuit, we measure the qubits.
 
-![Môj obrázok](${c2})
+For example:
 
-Tu máme dva qubity:
+![My image](${c1})
 
-- $q0$ je prvý qubit,
-- $q1$ je druhý qubit.
+This circuit means:
 
-Tieto čiary neznamenajú klasické elektrické káble. Sú to iba grafické znázornenia toho, ako sa stav qubitov mení počas výpočtu.
+1. we start with the state $|0\\rangle$,
+2. we apply the **Hadamard** gate,
+3. then we apply the **X** gate,
+4. and finally we measure the qubit.
 
+The order of the gates is very important, because a different order can lead to a different resulting state.
 
 ---
 
-## Jednokubitové a viackubitové brány
+## Qubit wires
 
-Niektoré brány pôsobia iba na jeden qubit.
+Each qubit has its own horizontal line in the circuit.
 
-Medzi **jednokubitové brány** patria napríklad:
+For example, a circuit with two qubits may look like this:
+
+![My image](${c2})
+
+Here we have two qubits:
+
+- $q0$ is the first qubit,
+- $q1$ is the second qubit.
+
+These lines do not represent classical electrical wires. They are only graphical representations of how the states of the qubits change during computation.
+
+---
+
+## Single-qubit and multi-qubit gates
+
+Some gates act only on one qubit.
+
+Examples of **single-qubit gates** include:
 
 - **X**,
 - **Y**,
@@ -95,283 +93,256 @@ Medzi **jednokubitové brány** patria napríklad:
 - **$R_y(\\theta)$**,
 - **$R_z(\\theta)$**.
 
-Napríklad:
+For example:
 
-![Môj obrázok](${c3})
+![My image](${c3})
 
-Táto brána pôsobí iba na qubit $q0$.
+This gate acts only on qubit $q0$.
 
-Niektoré brány však pôsobia na viac qubitov naraz.
+However, some gates act on multiple qubits at once.
 
-Typickým príkladom je brána **CNOT**:
+A typical example is the **CNOT** gate:
 
-![Môj obrázok](${c4})
+![My image](${c4})
 
-V tomto zápise:
+In this notation:
 
-- bodka **●** označuje **control qubit**,
-- symbol **X** označuje **target qubit**,
-- zvislá čiara ukazuje, že ide o jednu spoločnú dvojqubitovú operáciu.
+- the dot **●** marks the **control qubit**,
+- the **X** symbol marks the **target qubit**,
+- the vertical line shows that this is one shared two-qubit operation.
 
-Brána **CNOT** preklopí cieľový qubit iba vtedy, keď je riadiaci qubit v stave $|1\\rangle$.
+The **CNOT** gate flips the target qubit only when the control qubit is in the state $|1\\rangle$.
 
 ---
 
-## Meranie
+## Measurement
 
-Na konci kvantového obvodu zvyčajne vykonáme **meranie**.
+At the end of a quantum circuit, we usually perform **measurement**.
 
-Meranie prevedie kvantový stav na klasický výsledok.
+Measurement converts the quantum state into a classical result.
 
-Napríklad:
+For example:
 
-![Môj obrázok](${c5})
+![My image](${c5})
 
+Before measurement, a qubit can be in superposition. After measurement, however, we get a specific classical result: **0** or **1**, depending on the probabilities.
 
-Pred meraním môže byť qubit v superpozícii. Po meraní však dostaneme konkrétny klasický výsledok: **0** alebo **1**, vo závisloti od pravdepodobností. 
-
-Ak napríklad aplikujeme Hadamardovu bránu na stav $|0\\rangle$, dostaneme:
+For example, if we apply the Hadamard gate to the state $|0\\rangle$, we get:
 
 $$
 H|0\\rangle = \\frac{1}{\\sqrt{2}}(|0\\rangle + |1\\rangle)
 $$
 
-Po meraní dostaneme:
+After measurement, we get:
 
-- výsledok **0** s pravdepodobnosťou 50 %,
-- výsledok **1** s pravdepodobnosťou 50 %.
+- the result **0** with 50% probability,
+- the result **1** with 50% probability.
 
-Meranie je teda moment, kedy z kvantového stavu získame klasickú informáciu. Ale meranie nám zničí kvantovú informáciu, a ovplyvní aj informáciu vo ďalších qubitoch, so ktorými ma entanglement. 
-
----
-
-## Kvantové a klasické registre
-
-V kvantových obvodoch často rozlišujeme dva typy registrov:
-
-- **kvantový register** obsahuje qubity,
-- **klasický register** obsahuje výsledky merania.
-
-Napríklad:
-
-![Môj obrázok](${c6})
-
-tak výsledok merania qubitu $q0$ uložíme do $c0$ a výsledok merania qubitu $q1$ uložíme do $c1$.
-
+Measurement is therefore the moment when we obtain classical information from a quantum state. But measurement destroys the quantum information, and it also affects the information in other qubits with which it is entangled.
 
 ---
 
-## Príklad obvodu s entanglementom
+## Quantum and classical registers
 
-Teraz si ukážeme obvod s dvoma qubitmi:
+In quantum circuits, we often distinguish between two types of registers:
 
-![Môj obrázok](${c6})
+- a **quantum register** contains qubits,
+- a **classical register** contains measurement results.
 
-Tento obvod robí nasledovné:
+For example:
 
-1. Oba qubity začínajú v stave $|0\\rangle$.
-2. Na prvý qubit $q0$ aplikujeme bránu **Hadamard**.
-3. Qubit $q0$ sa dostane do superpozície.
-4. Potom aplikujeme bránu **CNOT**.
-5. Prvý qubit je **control** a druhý qubit je **target**.
-6. Vznikne previazaný stav, teda **entanglement**.
-7. Nakoniec oba qubity zmeriame.
+![My image](${c6})
 
-Výsledný stav môžeme zapísať ako:
+then we store the measurement result of qubit $q0$ in $c0$, and the measurement result of qubit $q1$ in $c1$.
+
+---
+
+## Example of a circuit with entanglement
+
+Now let us look at a circuit with two qubits:
+
+![My image](${c6})
+
+This circuit does the following:
+
+1. Both qubits start in the state $|0\\rangle$.
+2. We apply the **Hadamard** gate to the first qubit $q0$.
+3. Qubit $q0$ enters superposition.
+4. Then we apply the **CNOT** gate.
+5. The first qubit is the **control** and the second qubit is the **target**.
+6. An entangled state is created.
+7. Finally, we measure both qubits.
+
+The resulting state can be written as:
 
 $$
 \\frac{1}{\\sqrt{2}}(|00\\rangle + |11\\rangle)
 $$
 
-To znamená, že po meraní dostaneme buď:
+That means that after measurement, we get either:
 
 - **00**,
-- alebo **11**.
+- or **11**.
 
-Nedostaneme však **01** alebo **10**.
+But we do not get **01** or **10**.
 
-Tento príklad ukazuje, že dva qubity môžu byť previazané tak, že ich výsledky merania spolu súvisia.
-
-
----
-
-## Z čoho sa skladá kvantový obvod?
-
-Kvantový obvod sa skladá z niekoľkých základných častí:
-
-### Qubity
-
-Qubity sú základné jednotky kvantovej informácie.
-
-
-### Počiatočný stav
-
-Najčastejšie začíname so všetkými qubitmi v stave $|0\\rangle$.
-
-### Kvantové brány
-
-Kvantové brány menia stav qubitov.
-
-
-### Viackubitové operácie
-
-Niektoré operácie prepájajú viac qubitov.
-
-
-### Meranie
-
-Meranie prevedie kvantový stav na klasický výsledok.
-
-
-### Klasické bity
-
-Klasické bity uchovávajú výsledky merania.
-
+This example shows that two qubits can be entangled so that their measurement outcomes are related.
 
 ---
 
-## Kvantový obvod ako algoritmus
+## What is a quantum circuit made of?
 
-Kvantový obvod môžeme chápať ako konkrétny zápis kvantového algoritmu.
+A quantum circuit consists of several basic parts:
 
-**Kvantový algoritmus** hovorí, čo chceme vypočítať.  
-**Kvantový obvod** hovorí, ako tento výpočet vykonáme pomocou qubitov a kvantových brán.
+### Qubits
 
-Inými slovami:
+Qubits are the basic units of quantum information.
 
-> Kvantový algoritmus je myšlienka výpočtu.  
-> Kvantový obvod je konkrétny postup, ako túto myšlienku zapíšeme pomocou brán.
+### Initial state
+
+Most often, we begin with all qubits in the state $|0\\rangle$.
+
+### Quantum gates
+
+Quantum gates change the states of qubits.
+
+### Multi-qubit operations
+
+Some operations connect multiple qubits.
+
+### Measurement
+
+Measurement converts the quantum state into a classical result.
+
+### Classical bits
+
+Classical bits store the measurement results.
 
 ---
 
+## Quantum circuit as an algorithm
 
+We can understand a quantum circuit as a concrete representation of a quantum algorithm.
+
+A **quantum algorithm** tells us what we want to compute.
+A **quantum circuit** tells us how to perform that computation using qubits and quantum gates.
+
+In other words:
+
+> A quantum algorithm is the idea of the computation.
+> A quantum circuit is the concrete procedure for writing that idea using gates.
 `,
   questions: [
-
-  {
-    id: "q1",
-    type: "multiple-choice",
-    prompt: "Kvantový obvod je:",
-    options: [
-      "postupnosť kvantových operácií aplikovaných na qubity",
-      "elektrický kábel v počítači",
-      "iba jeden qubit",
-      "výsledok merania",
-    ],
-    correctAnswer: "postupnosť kvantových operácií aplikovaných na qubity",
-    explanation: "",
-  },
-
-  {
-    id: "q2",
-    type: "short-answer",
-    prompt: "Kvantový obvod sa po anglicky nazýva quantum __________.",
-    correctAnswer: ["circuit"],
-    explanation: "",
-  },
-
-  {
-    id: "q3",
-    type: "multiple-choice",
-    prompt: "Kvantový obvod čítame:",
-    options: [
-      "zľava doprava",
-      "sprava doľava",
-      "zdola nahor",
-      "náhodne",
-    ],
-    correctAnswer: "zľava doprava",
-    explanation: "",
-  },
-
-  {
-    id: "q4",
-    type: "multiple-choice",
-    prompt: "Na konci kvantového obvodu zvyčajne vykonáme:",
-    options: [
-      "meranie",
-      "vymazanie obvodu",
-      "kopírovanie qubitu",
-      "zmenu názvu qubitu",
-    ],
-    correctAnswer: "meranie",
-    explanation: "",
-  },
-
-  {
-    id: "q5",
-    type: "multiple-choice",
-    prompt: "Meranie prevedie kvantový stav na:",
-    options: [
-      "klasický výsledok",
-      "nový kvantový počítač",
-      "ďalšiu bránu",
-      "Blochovu sféru",
-    ],
-    correctAnswer: "klasický výsledok",
-    explanation: "",
-  },
-
-  {
-    id: "q6",
-    type: "short-answer",
-    prompt: "Kvantový register obsahuje __________.",
-    correctAnswer: ["qubity", "qubitov"],
-    explanation: "",
-  },
-
-  {
-    id: "q7",
-    type: "short-answer",
-    prompt: "Klasický register obsahuje výsledky __________.",
-    correctAnswer: ["merania", "meraní", "merani"],
-    explanation: "",
-  },
-
-  {
-    id: "q8",
-    type: "multiple-choice",
-    prompt: "Pri bráne CNOT bodka ● označuje:",
-    options: [
-      "control qubit",
-      "target qubit",
-      "klasický bit",
-      "meranie",
-    ],
-    correctAnswer: "control qubit",
-    explanation: "",
-  },
-
-  {
-    id: "q9",
-    type: "multiple-choice",
-    prompt: "Pravda alebo nepravda: Brána CNOT preklopí cieľový qubit iba vtedy, keď je riadiaci qubit v stave ∣1⟩.",
-    options: [
-      "Pravda",
-      "Nepravda",
-    ],
-    correctAnswer: "Pravda",
-    explanation: "",
-  },
-
-  {
-    id: "q10",
-    type: "multiple-choice",
-    prompt: "V príklade s entanglementom po meraní dostaneme hlavne výsledky:",
-    options: [
-      "00 alebo 11",
-      "01 alebo 10",
-      "iba 00",
-      "iba 10",
-    ],
-    correctAnswer: "00 alebo 11",
-    explanation: "",
-  },
-
-    
-
-
-  
+    {
+      id: "q1",
+      type: "multiple-choice",
+      prompt: "A quantum circuit is:",
+      options: [
+        "a sequence of quantum operations applied to qubits",
+        "an electrical cable inside a computer",
+        "only one qubit",
+        "a measurement result",
+      ],
+      correctAnswer: "a sequence of quantum operations applied to qubits",
+      explanation: "",
+    },
+    // {
+    //   id: "q2",
+    //   type: "short-answer",
+    //   prompt: "In English, a quantum circuit is called a quantum __________.",
+    //   correctAnswer: ["circuit"],
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q3",
+    //   type: "multiple-choice",
+    //   prompt: "We read a quantum circuit:",
+    //   options: [
+    //     "from left to right",
+    //     "from right to left",
+    //     "from bottom to top",
+    //     "randomly",
+    //   ],
+    //   correctAnswer: "from left to right",
+    //   explanation: "",
+    // },
+    {
+      id: "q4",
+      type: "multiple-choice",
+      prompt: "At the end of a quantum circuit, we usually perform:",
+      options: [
+        "measurement",
+        "circuit deletion",
+        "qubit copying",
+        "renaming of a qubit",
+      ],
+      correctAnswer: "measurement",
+      explanation: "",
+    },
+    {
+      id: "q5",
+      type: "multiple-choice",
+      prompt: "Measurement converts a quantum state into:",
+      options: [
+        "a classical result",
+        "a new quantum computer",
+        "another gate",
+        "a Bloch sphere",
+      ],
+      correctAnswer: "a classical result",
+      explanation: "",
+    },
+    // {
+    //   id: "q6",
+    //   type: "short-answer",
+    //   prompt: "A quantum register contains __________.",
+    //   correctAnswer: ["qubits", "qubit"],
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q7",
+    //   type: "short-answer",
+    //   prompt: "A classical register contains the results of __________.",
+    //   correctAnswer: ["measurement", "measurements"],
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q8",
+    //   type: "multiple-choice",
+    //   prompt: "In a CNOT gate, the dot ● marks the:",
+    //   options: [
+    //     "control qubit",
+    //     "target qubit",
+    //     "classical bit",
+    //     "measurement",
+    //   ],
+    //   correctAnswer: "control qubit",
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q9",
+    //   type: "multiple-choice",
+    //   prompt: "True or false: The CNOT gate flips the target qubit only when the control qubit is in the state ∣1⟩.",
+    //   options: [
+    //     "True",
+    //     "False",
+    //   ],
+    //   correctAnswer: "True",
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q10",
+    //   type: "multiple-choice",
+    //   prompt: "In the entanglement example, after measurement we mainly get the results:",
+    //   options: [
+    //     "00 or 11",
+    //     "01 or 10",
+    //     "only 00",
+    //     "only 10",
+    //   ],
+    //   correctAnswer: "00 or 11",
+    //   explanation: "",
+    // },
   ],
   showEditor: false,
   starterCode: `import sys
@@ -390,6 +361,5 @@ except Exception as error:
     print("Qiskit import failed:", error)
 `,
 };
-
 
 export default qiskitFirstCircuitLesson;

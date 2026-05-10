@@ -1,263 +1,259 @@
-
 const qiskitFirstCircuitLesson = {
-  id: "qiskit-first-circuit",
-  title: "Lekcia 2: Prvý obvod v Qiskite",
-  summary: "Praktická lekcia s editorom a jednoduchým kvantovým obvodom.",
+  id: "programming-quantum-circuits-in-qiskit",
+  title: "Lesson 5: Programming Quantum Circuits in Qiskit",
+  summary: "A hands-on lesson on building, simulating, drawing, and measuring Qiskit circuits in Python.",
   theory: `
 
 
-# Programovanie kvantových obvodov v Qiskit
+# Programming quantum circuits in Qiskit
 
-Teraz si ukážeme, ako vieme kvantový obvod zapísať v **Pythone** pomocou knižnice **Qiskit**.
+Now we will show how we can write a quantum circuit in **Python** using the **Qiskit** library.
 
-Doteraz sme kvantové obvody kreslili ako diagramy.  
-V Qiskite ich budeme zapisovať ako program.
+So far, we have drawn quantum circuits as diagrams.
+In Qiskit, we will write them as programs.
 
-Základný postup je:
+The basic procedure is:
 
-- vytvoríme kvantový obvod,
-- aplikujeme kvantové brány na konkrétne qubity,
-- zmeriame qubity,
-- spustíme simuláciu,
-- výsledky zobrazíme ako histogram.
+- create a quantum circuit,
+- apply quantum gates to specific qubits,
+- measure the qubits,
+- run the simulation,
+- display the results as a histogram.
 
 ---
 
-## Import knižníc
+## Importing libraries
 
-Najprv potrebujeme importovať nástroje, ktoré budeme používať.
+First, we need to import the tools we will use.
 
     from qiskit import QuantumCircuit, transpile
 
-Tento riadok importuje:
+This line imports:
 
-- **QuantumCircuit**, pomocou ktorého vytvárame kvantový obvod,
-- **transpile**, ktorý pripraví obvod pre simulátor.
+- **QuantumCircuit**, which we use to create a quantum circuit,
+- **transpile**, which prepares the circuit for the simulator.
 
-Ďalej importujeme simulátor:
+Next, we import the simulator:
 
     from qiskit_aer import AerSimulator
 
-**AerSimulator** je simulátor kvantového počítača.
+**AerSimulator** is a quantum computer simulator.
 
-To znamená, že kvantový obvod nespúšťame na reálnom kvantovom počítači, ale simulujeme ho na klasickom počítači. Simulovať vieme iba do približne 15-20 qubitov. Simulovanie qubitov je ďalej extrémne náročné, zložitosť rastie exponenciálne. Superpočítač vie simulovať maximálne iba približne 40 qubitov.
+That means we are not running the quantum circuit on a real quantum computer, but simulating it on a classical computer. In practice, we can simulate only around 15 to 20 qubits. Beyond that, simulation becomes extremely difficult because the complexity grows exponentially. Even a supercomputer can simulate only about 40 qubits at most.
 
-Nakoniec importujeme nástroj na zobrazenie výsledkov:
+Finally, we import a tool for displaying the results:
 
     from qiskit.visualization import plot_histogram
 
-Pomocou **plot_histogram** zobrazíme výsledky merania ako histogram.
+Using **plot_histogram**, we display the measurement results as a histogram.
 
 ---
 
-## Vytvorenie kvantového obvodu
+## Creating a quantum circuit
 
-Kvantový obvod vytvoríme takto:
+We create a quantum circuit like this:
 
     circuit = QuantumCircuit(1, 1)
 
-Tento riadok vytvorí kvantový obvod.
+This line creates a quantum circuit.
 
-Prvé číslo znamená počet qubitov.
+The first number means the number of qubits.
 
-Druhé číslo znamená počet klasických bitov.
+The second number means the number of classical bits.
 
-V tomto prípade máme:
+In this case, we have:
 
 - **1 qubit**,
-- **1 klasický bit**.
+- **1 classical bit**.
 
-Všeobecne môžeme písať:
+In general, we can write:
 
-    circuit = QuantumCircuit(počet_qubitov, počet_klasických_bitov)
+    circuit = QuantumCircuit(number_of_qubits, number_of_classical_bits)
 
-Klasické bity potrebujeme preto, aby sme do nich uložili výsledky merania.
+We need classical bits so that we can store the measurement results in them.
 
 ---
 
-## Aplikovanie kvantovej brány
+## Applying a quantum gate
 
-Na qubit môžeme aplikovať kvantovú bránu.
+We can apply a quantum gate to a qubit.
 
-Napríklad:
+For example:
 
     circuit.h(0)
 
-Tento riadok aplikuje bránu **Hadamard** na qubit  **q0**.
+This line applies the **Hadamard** gate to qubit **q0**.
 
-V Qiskite sa qubity číslujú od nuly.
+In Qiskit, qubits are numbered starting from zero.
 
-To znamená:
+That means:
 
-- prvý qubit má číslo **0**,
-- druhý qubit má číslo **1**,
-- tretí qubit má číslo **2**.
+- the first qubit has number **0**,
+- the second qubit has number **1**,
+- the third qubit has number **2**.
 
-Brána Hadamard vytvorí zo stavu $|0\\rangle$ superpozíciu:
+The Hadamard gate creates a superposition from the state $|0\\rangle$:
 
 $$
 H|0\\rangle = \\frac{1}{\\sqrt{2}}(|0\\rangle + |1\\rangle)
 $$
 
-Po meraní teda môžeme dostať výsledok **0** alebo **1** približne s rovnakou pravdepodobnosťou.
+After measurement, we can therefore get the result **0** or **1** with approximately the same probability.
 
 ---
 
-## Ďalšie jednokubitové brány
+## Other single-qubit gates
 
-Podobne môžeme aplikovať aj iné brány.
+In the same way, we can also apply other gates.
 
-Brána **X** na qubit číslo 0:
+The **X** gate on qubit number 0:
 
     circuit.x(0)
 
-Brána **Y** na qubit číslo 0:
+The **Y** gate on qubit number 0:
 
     circuit.y(0)
 
-Brána **Z** na qubit číslo 0:
+The **Z** gate on qubit number 0:
 
     circuit.z(0)
 
-Rotačná brána okolo osi X:
+A rotation gate around the X axis:
 
     circuit.rx(3.14, 0)
 
-Rotačná brána okolo osi Y:
+A rotation gate around the Y axis:
 
     circuit.ry(3.14, 0)
 
-Rotačná brána okolo osi Z:
+A rotation gate around the Z axis:
 
     circuit.rz(3.14, 0)
 
-Pri rotačných bránach prvé číslo znamená uhol rotácie a druhé číslo znamená qubit.
+For rotation gates, the first number means the rotation angle and the second number means the qubit.
 
-Napríklad:
+For example:
 
     circuit.rx(3.14, 0)
 
-znamená, že qubit číslo **0** otočíme okolo osi **X** o uhol približne $\\pi$ radiánov.
+means that we rotate qubit number **0** around the **X** axis by an angle of approximately $\\pi$ radians.
 
 ---
 
-## Brána CNOT v Qiskit
+## The CNOT gate in Qiskit
 
-Bránu **CNOT** zapisujeme pomocou príkazu:
+We write the **CNOT** gate using the command:
 
     circuit.cx(0, 1)
 
-Tento zápis znamená:
+This notation means:
 
-- qubit **0** je **control qubit**,
-- qubit **1** je **target qubit**.
+- qubit **0** is the **control qubit**,
+- qubit **1** is the **target qubit**.
 
-Všeobecne:
+In general:
 
     circuit.cx(control, target)
 
-Brána **CNOT** preklopí cieľový qubit iba vtedy, keď je riadiaci qubit v stave $|1\\rangle$.
+The **CNOT** gate flips the target qubit only when the control qubit is in the state $|1\\rangle$.
 
 ---
 
-## Meranie qubitu
+## Measuring a qubit
 
-Na konci obvodu qubit zmeriame.
+At the end of the circuit, we measure the qubit.
 
     circuit.measure(0, 0)
 
-Tento riadok znamená:
+This line means:
 
-- zmeriame qubit číslo **0**,
-- výsledok uložíme do klasického bitu číslo **0**.
+- we measure qubit number **0**,
+- we store the result in classical bit number **0**.
 
-Všeobecne platí:
+In general:
 
-    circuit.measure(qubit, klasický_bit)
+    circuit.measure(qubit, classical_bit)
 
-Meranie prevedie kvantový stav na klasický výsledok.
+Measurement converts the quantum state into a classical result.
 
-Pred meraním môže byť qubit v superpozícii.  
-Po meraní dostaneme konkrétny výsledok:
+Before measurement, the qubit may be in superposition.
+After measurement, we get a concrete result:
 
 - **0**,
-- alebo **1**.
+- or **1**.
 
 ---
 
-## Spustenie simulátora
+## Running the simulator
 
-Najprv vytvoríme simulátor:
+First, we create the simulator:
 
     simulator = AerSimulator()
 
-Tento riadok vytvorí simulátor kvantového počítača.
+This line creates a quantum computer simulator.
 
-Potom pripravíme obvod pre simulátor:
+Then we prepare the circuit for the simulator:
 
     compiled_circuit = transpile(circuit, simulator)
 
-Tento riadok upraví obvod tak, aby ho simulátor vedel správne spustiť.
+This line adjusts the circuit so that the simulator can run it correctly.
 
-Následne spustíme simuláciu:
+Then we run the simulation:
 
     job = simulator.run(compiled_circuit, shots=1000)
 
-Tento riadok spustí obvod **1000-krát**.
+This line runs the circuit **1000 times**.
 
-Slovo **shots** znamená počet opakovaní experimentu.
+The word **shots** means the number of repetitions of the experiment.
 
-Kvantové meranie je pravdepodobnostné.  
-Jedno spustenie obvodu dá iba jeden výsledok.  
-Ak obvod spustíme veľakrát, vidíme rozdelenie výsledkov.
-
-
+Quantum measurement is probabilistic.
+One execution of the circuit gives only one result.
+If we run the circuit many times, we can observe the distribution of results.
 
 ---
 
-## Získanie výsledkov
+## Getting the results
 
-Po spustení simulácie získame výsledok:
+After running the simulation, we obtain the result:
 
     result = job.result()
 
-Tento riadok zoberie výsledok zo simulácie.
+This line retrieves the result from the simulation.
 
-Potom si z výsledku vytiahneme počty jednotlivých meraní:
+Then we extract the counts of the individual measurement outcomes:
 
     counts = result.get_counts()
 
-Premenná **counts** obsahuje informáciu, koľkokrát sme namerali jednotlivé výsledky.
+The variable **counts** contains information about how many times each result was measured.
 
-Napríklad výsledok môže vyzerať takto:
+For example, the result may look like this:
 
     {'0': 505, '1': 495}
 
-To znamená, že pri 1000 opakovaniach sme približne:
+That means that in 1000 repetitions, we approximately:
 
-- 505-krát namerali výsledok **0**,
-- 495-krát namerali výsledok **1**.
+- measured **0** 505 times,
+- measured **1** 495 times.
 
 ---
 
-## Zobrazenie histogramu
+## Displaying the histogram
 
-Výsledky si môžeme zobraziť ako histogram:
+We can display the results as a histogram:
 
     plot_histogram(counts)
 
-Tento riadok vykreslí graf výsledkov merania.
+This line draws a chart of the measurement results.
 
-Na histograme uvidíme, ako často sme dostali jednotlivé výsledky.
+In the histogram, we can see how often we obtained each result.
 
 ---
 
-## Celý jednoduchý príklad
+## Full simple example
 
-**Tento kód môžeme brať ako šablónu, ktorú budeme používať pri väčšine jednoduchých kvantových obvodov. Väčšina kódu ostáva stále rovnaká.**, Najčastejšie budeme upravovať iba **strednú časť kódu**, teda miesto, kde aplikujeme kvantové brány. Takže vôbec sa netrápte tým, že daný kód vyzerá komplikovane. 
+**We can treat this code as a template that we will use for most simple quantum circuits. Most of the code stays the same.** Most often, we will modify only the **middle part of the code**, which is the place where we apply quantum gates. So do not worry if the code looks complicated.
 
-
-Tento program vytvorí jeden qubit, aplikuje naň Hadamardovu bránu, zmeria ho a zobrazí výsledky.
+This program creates one qubit, applies the Hadamard gate to it, measures it, and displays the results.
 
     from qiskit import QuantumCircuit, transpile
     from qiskit_aer import AerSimulator
@@ -283,73 +279,73 @@ Tento program vytvorí jeden qubit, aplikuje naň Hadamardovu bránu, zmeria ho 
 
 ---
 
-## Čo očakávame ako výsledok?
+## What do we expect as a result?
 
-V tomto príklade sme na stav $|0\\rangle$ aplikovali Hadamardovu bránu.
+In this example, we applied the Hadamard gate to the state $|0\\rangle$.
 
-Tá vytvorí superpozíciu:
+It creates the superposition:
 
 $$
 H|0\\rangle = \\frac{1}{\\sqrt{2}}(|0\\rangle + |1\\rangle)
 $$
 
-Preto po meraní očakávame približne:
+Therefore, after measurement we expect approximately:
 
-- **50 %** výsledkov bude **0**,
-- **50 %** výsledkov bude **1**.
+- **50%** of the results to be **0**,
+- **50%** of the results to be **1**.
 
-Výsledky nemusia byť presne 500 a 500, pretože meranie je pravdepodobnostné.
+The results do not have to be exactly 500 and 500, because measurement is probabilistic.
 
-Môžeme teda dostať napríklad:
+So we may get, for example:
 
     {'0': 492, '1': 508}
 
-alebo:
+or:
 
     {'0': 515, '1': 485}
 
-Dôležité je, že výsledky budú približne rovnomerne rozdelené. Ak by sme zvyšovali počet shots, tak sa nám výsledky budú približovať viac a viac ku 50% pravdepodobnosti.
+The important point is that the results will be distributed approximately evenly. If we increase the number of shots, the results will get closer and closer to the 50% probability.
 
 ---
 
-## Príklad s dvoma qubitmi a entanglementom
+## Example with two qubits and entanglement
 
-Teraz vytvoríme obvod s dvoma qubitmi.
+Now we create a circuit with two qubits.
 
     circuit = QuantumCircuit(2, 2)
 
-Tento riadok vytvorí obvod s:
+This line creates a circuit with:
 
-- **2 qubitmi**,
-- **2 klasickými bitmi**.
+- **2 qubits**,
+- **2 classical bits**.
 
-Na prvý qubit aplikujeme Hadamardovu bránu:
+We apply the Hadamard gate to the first qubit:
 
     circuit.h(0)
 
-Tým dostaneme qubit číslo **0** do superpozície.
+This puts qubit number **0** into superposition.
 
-Potom aplikujeme bránu CNOT:
+Then we apply the CNOT gate:
 
     circuit.cx(0, 1)
 
-Tento riadok znamená:
+This line means:
 
-- qubit **0** je **control**,
-- qubit **1** je **target**.
+- qubit **0** is the **control**,
+- qubit **1** is the **target**.
 
-Nakoniec oba qubity zmeriame:
+Finally, we measure both qubits:
 
     circuit.measure(0, 0)
     circuit.measure(1, 1)
 
-Prvý riadok zmeria qubit **0** a výsledok uloží do klasického bitu **0**.
+The first line measures qubit **0** and stores the result in classical bit **0**.
 
-Druhý riadok zmeria qubit **1** a výsledok uloží do klasického bitu **1**.
+The second line measures qubit **1** and stores the result in classical bit **1**.
 
 ---
 
-## Celý príklad s entanglementom
+## Full example with entanglement
 
     from qiskit import QuantumCircuit, transpile
     from qiskit_aer import AerSimulator
@@ -376,66 +372,57 @@ Druhý riadok zmeria qubit **1** a výsledok uloží do klasického bitu **1**.
 
     plot_histogram(counts)
 
-Tento obvod vytvorí previazaný stav:
+This circuit creates the entangled state:
 
 $$
 \\frac{1}{\\sqrt{2}}(|00\\rangle + |11\\rangle)
 $$
 
-Po meraní očakávame hlavne výsledky:
+After measurement, we mainly expect the results:
 
 - **00**,
 - **11**.
 
-Výsledky **01** a **10** by sa v ideálnej simulácii nemali objaviť.
+The results **01** and **10** should not appear in an ideal simulation.
 
-Tento príklad ukazuje, že qubity môžu byť previazané.  
-Výsledky ich merania potom spolu súvisia.
+This example shows that qubits can be entangled.
+The results of their measurements are then related.
 
 ---
 
-## Zobrazenie obvodu
+## Displaying the circuit
 
-Obvod si môžeme aj vykresliť ako diagram:
+We can also draw the circuit as a diagram:
 
     display(circuit.draw("mpl"))
 
-Tento riadok zobrazí kvantový obvod.
+This line displays the quantum circuit.
 
-
-Qiskit nám teda umožňuje zapísať kvantový obvod ako program, zobraziť ho, spustiť ho na simulátore a pozrieť si výsledky merania.
-
+Qiskit therefore allows us to write a quantum circuit as a program, display it, run it on a simulator, and inspect the measurement results.
 
 ---
-## Úloha
+## Task
 
-V tejto úlohe si vyskúšajte upravovať kvantový obvod.
+In this task, try modifying the quantum circuit yourself.
 
-Kód môžete brať ako **šablónu**. Väčšina častí ostáva rovnaká — importy, vytvorenie obvodu, meranie, simulácia a zobrazenie histogramu.
+You can treat the code as a **template**. Most parts stay the same: imports, circuit creation, measurement, simulation, and histogram display.
 
-Upravovať budete hlavne **strednú časť obvodu**, teda miesto, kde sa aplikujú kvantové brány.
+You will mainly modify the **middle part of the circuit**, which is where the quantum gates are applied.
 
-Skúste napríklad pridať alebo zmeniť **kvantové brány** na rôznych qubitoch.
+For example, try adding or changing **quantum gates** on different qubits.
 
-Môžete skúšať aj rôzne rotačné brány s rôznymi uhlami.
+You can also try different rotation gates with different angles.
 
-Napríklad:
+For example:
 
     circuit.rx(1.28, 0)
     circuit.ry(2.98, 1)
 
+After each change, run the circuit again and observe how the histogram of results changes.
 
-Po každej zmene obvod znova spustite a sledujte, ako sa zmení histogram výsledkov.
-
-Cieľom je pochopiť, že rôzne kvantové brány menia stav qubitu rôznym spôsobom, a preto menia aj pravdepodobnosti výsledkov merania.
-
+The goal is to understand that different quantum gates change the state of a qubit in different ways, and therefore also change the probabilities of measurement outcomes.
 `,
-  questions: [
-    
-
-
-  
-  ],
+  questions: [],
   showEditor: true,
   starterCode: `from qiskit import QuantumCircuit, transpile
 from qiskit_aer import AerSimulator
@@ -459,6 +446,5 @@ display(plot_histogram(counts))
 
 `,
 };
-
 
 export default qiskitFirstCircuitLesson;

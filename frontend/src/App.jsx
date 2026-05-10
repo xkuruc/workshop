@@ -59,7 +59,7 @@ export default function App() {
   const nextLesson = lessons[currentLessonIndex + 1] || null;
   const currentWorkspace = currentLesson.showEditor ? lessonWorkspaces[currentLesson.id] : null;
   const currentAnswers = lessonAnswers[currentLesson.id] || EMPTY_ANSWERS;
-  const progressLabel = `Lekcia ${currentLessonIndex + 1} z ${lessons.length}`;
+  const progressLabel = `Lesson ${currentLessonIndex + 1} of ${lessons.length}`;
   const navigationDisabled = busy || stopBusy || backendState.running;
 
   useEffect(() => {
@@ -178,7 +178,7 @@ export default function App() {
       await persistConfig();
       updateWorkspace(currentLesson.id, (workspace) => ({
         ...workspace,
-        notice: "Nastavenia boli uložené do local_config.json.",
+        notice: "Settings were saved to local_config.json.",
         errorMessage: "",
       }));
     } catch (error) {
@@ -230,7 +230,7 @@ export default function App() {
           exitCode: response.exit_code,
           durationSeconds: response.duration_seconds,
         },
-        notice: "Spustenie prebehlo lokálne na tvojom počítači.",
+        notice: "Execution ran locally on your machine.",
         errorMessage: "",
       }));
       setBackendState((current) => ({ ...current, connected: true, running: false }));
@@ -324,11 +324,15 @@ export default function App() {
     <div className="app-shell">
       <header className="hero">
         <div>
-          <p className="eyebrow">Local-first Python workshop</p>
-          <h1>Interaktívne lekcie s teóriou, otázkami a voliteľným Python editorom</h1>
+          <p className="eyebrow">Introductory quantum workshop</p>
+          <h1>Kosice Interactive Workshop</h1>
           <p className="hero-copy">
-            Každá lekcia môže obsahovať LaTeX, obrázky, okamžite vyhodnocované otázky a podľa
-            potreby aj lokálne spúšťaný Python editor na tvojej vlastnej mašine.
+            This is a simplified, intuition-first version designed to be more accessible than
+            fully technical. The main goal is understanding.
+          </p>
+          <p className="hero-copy hero-warning">
+            If you have questions or would like a more detailed explanation, an instructor in
+            the room can provide a more technical and expert perspective.
           </p>
         </div>
       </header>

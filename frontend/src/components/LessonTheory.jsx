@@ -5,7 +5,7 @@ export default function LessonTheory({ lesson }) {
   return (
     <section className="panel lesson-panel">
       <div className="panel-header">
-        <h2>Teória</h2>
+        <h2>Theory</h2>
       </div>
 
       <LessonMarkdown content={lesson.theory} className="lesson-markdown" />

@@ -1,142 +1,136 @@
 import bellCircuitIllustration from "../../assets/qiskit-circuit.svg";
 
-
 const qiskitFirstCircuitLesson = {
-  id: "qiskit-first-circuit",
-  title: "Lekcia 2: Prvý obvod v Qiskite",
-  summary: "Praktická lekcia s editorom a jednoduchým kvantovým obvodom.",
+  id: "basic-quantum-states-and-quantum-gates",
+  title: "Lesson 3: Basic Quantum States and Quantum Gates",
+  summary: "A practical introduction to Dirac notation, single-qubit gates, rotation gates, and the CNOT gate.",
   theory: `
 
 
-# Základné kvantové stavy a kvantové brány
+# Basic quantum states and quantum gates
 
-## Základné kvantové stavy
+## Basic quantum states
 
-Základné kvantové stavy zapisujeme takto: $|0\\rangle \\quad \\text{a} \\quad |1\\rangle$
+We write the basic quantum states like this: $|0\\rangle \\quad \\text{and} \\quad |1\\rangle$
 
-Tento zápis sa volá **Diracova notácia**.
+This notation is called **Dirac notation**.
 
-- Symbol $|0\\rangle$ predstavuje kvantový stav **0**.
-- Symbol $|1\\rangle$ predstavuje kvantový stav **1**.
+- The symbol $|0\\rangle$ represents the quantum state **0**.
+- The symbol $|1\\rangle$ represents the quantum state **1**.
 
-Qubit môže byť napríklad v stave:
+A qubit can, for example, be in the state:
 
 $$
 |\\psi\\rangle = \\alpha |0\\rangle + \\beta |1\\rangle
 $$
 
-To znamená, že qubit je v **superpozícii** stavov $|0\\rangle$ a $|1\\rangle$.
+That means the qubit is in a **superposition** of the states $|0\\rangle$ and $|1\\rangle$.
 
-Hodnoty $\\alpha$ a $\\beta$ určujú pravdepodobnosti, s akými po meraní dostaneme výsledok **$|0\\rangle$** alebo **$|1\\rangle$**.
+The values $\\alpha$ and $\\beta$ determine the probabilities with which, after measurement, we get the result **$|0\\rangle$** or **$|1\\rangle$**.
 
-Dôležité je, že qubit počas výpočtu nie je obyčajná skrytá nula alebo jednotka. Je to kvantový stav, s ktorým môžeme pracovať pomocou špeciálnych operácií.
+It is important to understand that during computation, a qubit is not just a hidden zero or one. It is a quantum state that we can work with using special operations.
 
-Tieto operácie sa nazývajú **kvantové operácie**, alebo častejšie **kvantové brány**.
-
-
+These operations are called **quantum operations**, or more commonly **quantum gates**.
 
 ---
 
-## Kvantové operácie
+## Quantum operations
 
-**Kvantová operácia** je transformácia, ktorú aplikujeme na jeden alebo viac qubitov.
+A **quantum operation** is a transformation that we apply to one or more qubits.
 
-Keď na qubit aplikujeme kvantovú operáciu, zmeníme jeho stav.
+When we apply a quantum operation to a qubit, we change its state.
 
-V klasickom počítaní poznáme logické brány, napríklad:
+In classical computing, we know logic gates such as:
 
 - **NOT**,
 - **AND**,
 - **OR**.
 
-Tieto brány pracujú s klasickými bitmi. Napríklad brána **NOT** zmení:
+These gates work with classical bits. For example, the **NOT** gate changes:
 
 $$
 0 \\rightarrow 1
 $$
 
-a zároveň:
+and also:
 
 $$
 1 \\rightarrow 0
 $$
 
-V kvantovom počítaní máme podobnú myšlienku, ale namiesto klasických bitov pracujeme s **qubitmi**.
+In quantum computing, we have a similar idea, but instead of classical bits we work with **qubits**.
 
-Kvantové operácie sa nazývajú **kvantové brány**. Každá kvantová brána mení kvantový stav podľa presne definovaného matematického pravidla.
+Quantum operations are called **quantum gates**. Every quantum gate changes the quantum state according to a precisely defined mathematical rule.
 
-Kvantové brány sa často zapisujú ako **matice**.
+Quantum gates are often written as **matrices**.
 
-Qubit môžeme chápať ako **vektor** a kvantovú bránu ako **maticu**, ktorá tento vektor transformuje.
+We can think of a qubit as a **vector** and a quantum gate as a **matrix** that transforms that vector.
 
-Pre účely tohto workshopu však nie je potrebné ísť príliš hlboko do lineárnej algebry. Dôležité je pochopiť, že **Kvantová brána mení stav qubitu** a **klasické počitače simulujú kvantové operácie** ako násobenie matíc.
-
----
-
-## Prečo hovoríme „kvantová brána“
-
-Pojem **brána** používame preto, že operácia je základný stavebný blok kvantového výpočtu.
-
-Tak ako v klasickom počítači skladáme výpočty z logických operácií, v kvantovom počítači skladáme výpočty z **kvantových brán**.
-
-Kvantová brána môže napríklad:
-
-- preklopiť stav qubitu,
-- zmeniť fázu qubitu,
-- otočiť stav qubitu okolo určitej osi,
-- vytvoriť superpozíciu,
-- previazať viac qubitov medzi sebou.
-
-**Kvantový algoritmus** je potom postupnosť takýchto brán aplikovaných na qubity.
+For the purposes of this workshop, however, it is not necessary to go too deeply into linear algebra. The important point is to understand that a **quantum gate changes the state of a qubit**, and that **classical computers simulate quantum operations** as matrix multiplication.
 
 ---
 
-## Základné kvantové brány
+## Why we say “quantum gate”
 
-V tejto časti si predstavíme základné **jednokubitové kvantové brány**.  
-Tieto brány pôsobia na jeden qubit a menia jeho stav na Blochovej sfére.
+We use the term **gate** because an operation is a basic building block of quantum computation.
 
-Najprv sa pozrieme na brány **X**, **Y** a **Z**.  
-Tieto brány si môžeme intuitívne predstaviť ako rotácie qubitu okolo príslušných osí:
+Just as in a classical computer we build computations from logical operations, in a quantum computer we build computations from **quantum gates**.
 
-- brána **X** je rotácia okolo osi **X** o 180°,
-- brána **Y** je rotácia okolo osi **Y** o 180°,
-- brána **Z** je rotácia okolo osi **Z** o 180°.
+A quantum gate can, for example:
 
-Inými slovami, brány **X**, **Y** a **Z** zodpovedajú rotáciám o uhol $\\pi$ radiánov okolo osí X, Y a Z.
+- flip the state of a qubit,
+- change the phase of a qubit,
+- rotate the state of a qubit around a particular axis,
+- create superposition,
+- entangle multiple qubits with one another.
 
-Neskôr budeme pracovať aj so všeobecnejšími rotačnými bránami: **$R_x(\\theta), \\quad R_y(\\theta), \\quad R_z(\\theta)$**
+A **quantum algorithm** is then a sequence of such gates applied to qubits.
 
+---
 
-Tieto brány robia to isté ako brány X, Y a Z, ale s jedným dôležitým rozdielom:  uhol rotácie nemusí byť iba 180°. Môžeme si zvoliť ľubovoľný uhol $\\theta$.
+## Basic quantum gates
 
-To znamená, že:
+In this part, we will introduce the basic **single-qubit quantum gates**.
+These gates act on one qubit and change its state on the Bloch sphere.
 
-- **X** je špeciálny prípad  $R_x(\\theta)$,
-- **Y** je špeciálny prípad $R_y(\\theta)$,
-- **Z** je špeciálny prípad $R_z(\\theta)$.
+First we will look at the **X**, **Y**, and **Z** gates.
+We can intuitively imagine these gates as rotations of the qubit around the corresponding axes:
 
-Pomocou kombinácií rotačných brán  $R_x(\\theta), R_y(\\theta)$ a $R_z(\\theta)$
-vieme qubit natočiť prakticky do ľubovoľného bodu na Blochovej sfére.
+- the **X** gate is a rotation around the **X** axis by 180°,
+- the **Y** gate is a rotation around the **Y** axis by 180°,
+- the **Z** gate is a rotation around the **Z** axis by 180°.
 
-Toto je veľmi dôležitá myšlienka:  
-ak vieme qubit ľubovoľne otáčať, vieme nad ním vykonávať všeobecné jednokubitové operácie.  
-V kombinácii s viackubitovými bránami nám to umožňuje skladať univerzálne kvantové výpočty.
+In other words, the **X**, **Y**, and **Z** gates correspond to rotations by an angle of $\\pi$ radians around the X, Y, and Z axes.
 
+Later, we will also work with more general rotation gates: **$R_x(\\theta), \\quad R_y(\\theta), \\quad R_z(\\theta)$**
 
-Jednotlivé brány si v ďalších častiach prejdeme podrobnejšie. Pri každej z nich si vysvetlíme jej intuíciu, ukážeme si, ako mení stav qubitu, a doplníme aj jej **maticový zápis**, aby bol popis presný a úplný.
+These gates do the same kind of thing as the X, Y, and Z gates, but with one important difference: the angle of rotation does not have to be only 180°. We can choose any angle $\\theta$.
 
-Maticový zápis je dôležitý preto, že stav qubitu vieme matematicky opísať ako vektor. Tento vektor si môžeme geometricky predstaviť ako bod na Blochovej sfére. Keď na qubit aplikujeme kvantovú bránu, meníme jeho stav — teda „otáčame“ alebo **transformujeme** tento vektor. V lineárnej algebre sa takéto transformácie opisujú pomocou násobenia matice a vektora.
+That means:
 
-Preto kvantové brány zapisujeme ako matice a ich pôsobenie na qubit môžeme zapísať ako:
+- **X** is a special case of $R_x(\\theta)$,
+- **Y** is a special case of $R_y(\\theta)$,
+- **Z** is a special case of $R_z(\\theta)$.
+
+Using combinations of the rotation gates $R_x(\\theta)$, $R_y(\\theta)$, and $R_z(\\theta)$, we can rotate a qubit to practically any point on the Bloch sphere.
+
+This is a very important idea:
+if we can rotate a qubit arbitrarily, we can perform general single-qubit operations on it.
+Combined with multi-qubit gates, this allows us to build universal quantum computations.
+
+We will go through the individual gates in more detail in the following sections. For each of them, we will explain the intuition, show how it changes the state of a qubit, and also include its **matrix notation** so that the description is precise and complete.
+
+Matrix notation is important because we can mathematically describe the state of a qubit as a vector. We can geometrically imagine this vector as a point on the Bloch sphere. When we apply a quantum gate to a qubit, we change its state, that is, we “rotate” or **transform** this vector. In linear algebra, such transformations are described using matrix-vector multiplication.
+
+That is why we write quantum gates as matrices, and their action on a qubit can be written as:
 
 $$
-\\text{nový stav} = \\text{brána} \\cdot \\text{pôvodný stav}
+\\text{new state} = \\text{gate} \\cdot \\text{original state}
 $$
 
-Maticový zápis nám teda umožňuje presne vypočítať, a simulovať správanie kvantového počítača; ako sa stav qubitu po aplikovaní danej brány zmení.
+Matrix notation therefore allows us to calculate and simulate the behavior of a quantum computer precisely: how the state of a qubit changes after applying a given gate.
 
-Kde stavy $\\lvert 0 \\rangle$ a $\\lvert 1 \\rangle$ sú reprezentované ako :
+Where the states $\\lvert 0 \\rangle$ and $\\lvert 1 \\rangle$ are represented as:
 
 $$
 \\lvert 0 \\rangle =
@@ -154,22 +148,21 @@ $$
 \\end{bmatrix}
 $$
 
-Inými slovami:
-- $\\lvert 0 \\rangle$ smeruje „hore“ na severný pól
-- $\\lvert 1 \\rangle$ smeruje „dole“ na južný pól
-
+In other words:
+- $\\lvert 0 \\rangle$ points “up” toward the north pole,
+- $\\lvert 1 \\rangle$ points “down” toward the south pole.
 
 ---
 
-## Brána X
+## X gate
 
-Brána **X** je kvantová verzia klasickej brány **NOT**.
+The **X** gate is the quantum version of the classical **NOT** gate.
 
-Ak máme qubit v stave $|0\\rangle$, brána X ho zmení na $|1\\rangle$.
+If we have a qubit in the state $|0\\rangle$, the X gate changes it to $|1\\rangle$.
 
-Ak máme qubit v stave $|1\\rangle$, brána X ho zmení na $|0\\rangle$.
+If we have a qubit in the state $|1\\rangle$, the X gate changes it to $|0\\rangle$.
 
-### Zápis
+### Notation
 
 $$
 X|0\\rangle = |1\\rangle
@@ -179,9 +172,9 @@ $$
 X|1\\rangle = |0\\rangle
 $$
 
-Preto sa brána **X** často nazýva aj **bit-flip brána**, pretože preklápa hodnotu qubitu podobne ako klasická operácia NOT.
+That is why the **X** gate is often called the **bit-flip gate**, because it flips the value of a qubit in a way similar to the classical NOT operation.
 
-### Maticový zápis brány X
+### Matrix notation of the X gate
 
 $$
 X =
@@ -191,19 +184,19 @@ X =
 \\end{bmatrix}
 $$
 
-### Intuitívne vysvetlenie
+### Intuitive explanation
 
-Bránu X si môžeme predstaviť ako otočenie stavu qubitu okolo osi **X** o $180^\\circ$ na Blochovej sfére.
+We can imagine the X gate as rotating the qubit state around the **X** axis by $180^\\circ$ on the Bloch sphere.
 
 ---
 
-## Brána Z
+## Z gate
 
-Brána **Z** nemení $|0\\rangle$ na $|1\\rangle$ ani $|1\\rangle$ na $|0\\rangle$.
+The **Z** gate does not change $|0\\rangle$ into $|1\\rangle$ or $|1\\rangle$ into $|0\\rangle$.
 
-Namiesto toho mení **fázu** stavu $|1\\rangle$.
+Instead, it changes the **phase** of the state $|1\\rangle$.
 
-### Zápis
+### Notation
 
 $$
 Z|0\\rangle = |0\\rangle
@@ -213,10 +206,10 @@ $$
 Z|1\\rangle = -|1\\rangle
 $$
 
-To znamená, že stav $|0\\rangle$ ostane nezmenený, ale stav $|1\\rangle$ dostane záporné znamienko. 
-Bránu Z si môžeme predstaviť ako otočenie stavu qubitu okolo osi **Y** o $180^\\circ$ na Blochovej sfére.
+That means the state $|0\\rangle$ remains unchanged, but the state $|1\\rangle$ gets a minus sign.
+We can imagine the Z gate as rotating the qubit state around the **Y** axis by $180^\\circ$ on the Bloch sphere.
 
-### Maticový zápis brány Z
+### Matrix notation of the Z gate
 
 $$
 Z =
@@ -226,29 +219,27 @@ Z =
 \\end{bmatrix}
 $$
 
+### Why is phase important?
 
-### Prečo je fáza dôležitá?
+At first sight, it may seem that the minus sign is not important.
 
-Na prvý pohľad sa môže zdať, že záporné znamienko nie je dôležité.
+If we simply measured the state $|1\\rangle$, we would still get the result **1**.
 
-Pri samotnom meraní stavu $|1\\rangle$ by sme stále dostali výsledok **1**.
+In quantum computation, however, phase is very important because it affects **interference** between different states.
 
-V kvantovom výpočte je však fáza veľmi dôležitá, pretože ovplyvňuje **interferenciu** medzi rôznymi stavmi.
+Quantum algorithms often rely precisely on the fact that some superpositions are amplified by this phenomenon while others cancel out.
 
-Kvantové algoritmy často využívajú práve to, že niektoré superpozície sa vďaka tomuto javu zosilnia a iné sa vyrušia.
+### Intuitive explanation
 
-
-### Intuitívne vysvetlenie
-
-Bránu Z si môžeme predstaviť ako otočenie stavu qubitu okolo osi **Z** o $180^\\circ$ na Blochovej sfére.
+We can imagine the **Z** gate as rotating the qubit state around the **Z** axis by $180^\\circ$ on the Bloch sphere.
 
 ---
 
-## Brána Y
+## Y gate
 
-Brána **Y** je kombináciou preklopenia stavu a zmeny fázy. Je to kombinácia brán X a Z.
+The **Y** gate is a combination of a state flip and a phase change. It is a combination of the X and Z gates.
 
-### Zápis
+### Notation
 
 $$
 Y|0\\rangle = i|1\\rangle
@@ -258,13 +249,13 @@ $$
 Y|1\\rangle = -i|0\\rangle
 $$
 
-Tu sa objavuje imaginárna jednotka $i$, kde platí:
+Here the imaginary unit $i$ appears, where:
 
 $$
 i^2 = -1
 $$
 
-### Maticový zápis brány Y
+### Matrix notation of the Y gate
 
 $$
 Y =
@@ -274,26 +265,25 @@ i & 0
 \\end{bmatrix}
 $$
 
-Brána **Y** teda podobne ako X preklápa $|0\\rangle$ a $|1\\rangle$, ale zároveň pridáva komplexnú fázu.
+So the **Y** gate, similarly to X, flips $|0\\rangle$ and $|1\\rangle$, but at the same time adds a complex phase.
 
-### Intuitívne vysvetlenie
+### Intuitive explanation
 
-Bránu Y si môžeme predstaviť ako otočenie stavu qubitu okolo osi **Y** o $180^\\circ$ na Blochovej sfére.
-
+We can imagine the Y gate as rotating the qubit state around the **Y** axis by $180^\\circ$ on the Bloch sphere.
 
 ---
 
-## Brána Hadamard
+## Hadamard gate
 
-Brána **Hadamard**, často označovaná ako **H**, je jedna z najdôležitejších jednokubitových kvantových brán.
+The **Hadamard** gate, often denoted **H**, is one of the most important single-qubit quantum gates.
 
-Používa sa najmä na vytvorenie **superpozície**.
+It is used mainly to create **superposition**.
 
-Ak máme qubit v stave $|0\\rangle$, brána **H** ho zmení na rovnomernú superpozíciu stavov $|0\\rangle$ a $|1\\rangle$.
+If we have a qubit in the state $|0\\rangle$, the **H** gate changes it into an equal superposition of the states $|0\\rangle$ and $|1\\rangle$.
 
-Ak máme qubit v stave $|1\\rangle$, brána **H** ho tiež zmení na superpozíciu, ale so záporným znamienkom pri stave $|1\\rangle$.
+If we have a qubit in the state $|1\\rangle$, the **H** gate also changes it into a superposition, but with a minus sign in front of the state $|1\\rangle$.
 
-### Zápis
+### Notation
 
 $$
 H|0\\rangle = \\frac{1}{\\sqrt{2}}(|0\\rangle + |1\\rangle)
@@ -303,9 +293,9 @@ $$
 H|1\\rangle = \\frac{1}{\\sqrt{2}}(|0\\rangle - |1\\rangle)
 $$
 
-Preto sa brána **Hadamard** často používa na prípravu qubitu do superpozície.
+That is why the **Hadamard** gate is often used to prepare a qubit in superposition.
 
-### Maticový zápis brány H
+### Matrix notation of the H gate
 
 $$
 H =
@@ -316,35 +306,35 @@ H =
 \\end{bmatrix}
 $$
 
-### Intuitívne vysvetlenie
+### Intuitive explanation
 
-Bránu **Hadamard** si môžeme predstaviť ako operáciu, ktorá presunie základné stavy $|0\\rangle$ a $|1\\rangle$ do superpozície, presne na rovník.
+We can imagine the **Hadamard** gate as an operation that moves the basis states $|0\\rangle$ and $|1\\rangle$ into superposition, exactly onto the equator.
 
-Brána **Hadamard** je veľmi dôležitá, pretože sa používa na začiatku mnohých kvantových algoritmov na vytvorenie superpozície.
+The **Hadamard** gate is very important because it is used at the beginning of many quantum algorithms to create superposition.
 
 ---
 
-## Rotačné brány Rx, Ry, Rz
+## Rotation gates Rx, Ry, Rz
 
-Okrem brán **X**, **Y** a **Z** používame aj rotačné brány.
+In addition to the **X**, **Y**, and **Z** gates, we also use rotation gates.
 
-Tieto brány otáčajú kvantový stav o určitý uhol.
+These gates rotate the quantum state by a certain angle.
 
-Najčastejšie používame:
+The most common ones are:
 
-| Brána | Význam |
+| Gate | Meaning |
 |---|---|
-| $R_x(\\theta)$ | rotácia okolo osi X |
-| $R_y(\\theta)$ | rotácia okolo osi Y |
-| $R_z(\\theta)$ | rotácia okolo osi Z |
+| $R_x(\\theta)$ | rotation around the X axis |
+| $R_y(\\theta)$ | rotation around the Y axis |
+| $R_z(\\theta)$ | rotation around the Z axis |
 
-Uhol rotácie označujeme gréckym písmenom $\\theta$.
+We denote the angle of rotation by the Greek letter $\\theta$.
 
-### Zápis rotačných brán
+### Notation of rotation gates
 
-Rotačné brány zapisujeme pomocou uhla rotácie $\\theta$.
+We write rotation gates using the rotation angle $\\theta$.
 
-Maticový zápis brány $R_x(\\theta)$ je:
+The matrix notation of the gate $R_x(\\theta)$ is:
 
 $$
 R_x(\\theta) =
@@ -354,7 +344,7 @@ R_x(\\theta) =
 \\end{bmatrix}
 $$
 
-Maticový zápis brány $R_y(\\theta)$ je:
+The matrix notation of the gate $R_y(\\theta)$ is:
 
 $$
 R_y(\\theta) =
@@ -364,7 +354,7 @@ R_y(\\theta) =
 \\end{bmatrix}
 $$
 
-Maticový zápis brány $R_z(\\theta)$ je:
+The matrix notation of the gate $R_z(\\theta)$ is:
 
 $$
 R_z(\\theta) =
@@ -376,60 +366,55 @@ $$
 
 ---
 
-### Brány X, Y, Z ako špeciálny prípad rotačných brán
+### X, Y, Z as special cases of rotation gates
 
-Brány **X**, **Y** a **Z** môžeme chápať ako špeciálny prípad rotačných brán.
+We can think of the **X**, **Y**, and **Z** gates as special cases of rotation gates.
 
-Konkrétne ide o rotáciu o: $\\theta = 180^\\circ = \\pi$
+Specifically, they are rotations by: $\\theta = 180^\\circ = \\pi$
 
-Preto môžeme intuitívne povedať:
+So we can intuitively say:
 
-| Brána | Interpretácia |
+| Gate | Interpretation |
 |---|---|
-| **X** | rotácia o $180^\\circ$ okolo osi X |
-| **Y** | rotácia o $180^\\circ$ okolo osi Y |
-| **Z** | rotácia o $180^\\circ$ okolo osi Z |
+| **X** | rotation by $180^\\circ$ around the X axis |
+| **Y** | rotation by $180^\\circ$ around the Y axis |
+| **Z** | rotation by $180^\\circ$ around the Z axis |
 
+That is, the gates $R_x(\\pi)$, $R_y(\\pi)$, and $R_z(\\pi)$ correspond to the **X**, **Y**, and **Z** gates when $\\theta = 180^\\circ = \\pi$.
 
-
-
-Teda brány $R_x(\\pi)$, $R_y(\\pi)$, $R_z(\\pi)$ - zodpovedajú bránam **X**, **Y** a **Z**  ak $\\theta = 180^\\circ = \\pi$
-
-Ale, tieto brány sú veľmi dôležité, pretože umožňujú jemne meniť stav qubitu o zvolený uhol, a umožnujú tzv. univerzálne výpočty.
+These gates are very important because they allow us to fine-tune the state of a qubit by a chosen angle, and they enable so-called universal computation.
 
 ---
 
-## Dvojqubitové brány
+## Two-qubit gates
 
-Doteraz sme pracovali hlavne s **jednokubitovými bránami**, teda bránami, ktoré pôsobia iba na jeden qubit.
+So far, we have worked mainly with **single-qubit gates**, meaning gates that act on only one qubit.
 
-V kvantových obvodoch však často používame aj **dvojqubitové brány**. Tie pôsobia naraz na dva qubity.
+In quantum circuits, however, we often also use **two-qubit gates**. These act on two qubits at the same time.
 
-Jednou z najdôležitejších dvojqubitových brán je brána **CNOT**.
+One of the most important two-qubit gates is the **CNOT** gate.
 
 ---
 
-## Brána CNOT
+## CNOT gate
 
-Brána **CNOT** znamená **Controlled-NOT**, teda riadená NOT brána.
+**CNOT** stands for **Controlled-NOT**.
 
-Táto brána pracuje s dvoma qubitmi:
+This gate works with two qubits:
 
-- prvý qubit je **riadiaci qubit**, po anglicky **control qubit**,
-- druhý qubit je **cieľový qubit**, po anglicky **target qubit**.
+- the first qubit is the **control qubit**,
+- the second qubit is the **target qubit**.
 
-Brána CNOT funguje takto:
+The CNOT gate works like this:
 
-- ak je riadiaci qubit v stave $|0\\rangle$, cieľový qubit sa nezmení,
-- ak je riadiaci qubit v stave $|1\\rangle$, na cieľový qubit sa aplikuje brána **X**.
+- if the control qubit is in the state $|0\\rangle$, the target qubit does not change,
+- if the control qubit is in the state $|1\\rangle$, the **X** gate is applied to the target qubit.
 
-Inými slovami:
+In other words:
 
-> CNOT preklopí druhý qubit iba vtedy, keď je prvý qubit v stave $|1\\rangle$.
+> CNOT flips the second qubit only when the first qubit is in the state $|1\\rangle$.
 
-
-
-### Zápis pôsobenia brány CNOT
+### Notation of the action of the CNOT gate
 
 $$
 \\text{CNOT}|00\\rangle = |00\\rangle
@@ -447,17 +432,16 @@ $$
 \\text{CNOT}|11\\rangle = |10\\rangle
 $$
 
-Pri tomto zápise berieme prvý qubit ako **control** a druhý qubit ako **target**.
+In this notation, we take the first qubit as the **control** and the second qubit as the **target**.
 
+### Matrix notation of the CNOT gate
 
-### Maticový zápis brány CNOT
-
-Ak používame poradie stavov:
+If we use the ordering of states:
 $
 |00\\rangle, |01\\rangle, |10\\rangle, |11\\rangle
 $
 
-tak maticový zápis brány CNOT je:
+then the matrix notation of the CNOT gate is:
 
 $$
 \\text{CNOT} =
@@ -469,32 +453,31 @@ $$
 \\end{bmatrix}
 $$
 
+We can imagine the CNOT gate as a conditional version of the **X** gate.
 
-
-Bránu CNOT si môžeme predstaviť ako podmienenú verziu brány **X**.
-
-Brána **X** vždy preklopí qubit:
+The **X** gate always flips a qubit:
 $
 |0\\rangle \\rightarrow |1\\rangle
 $
-a
+and
 $
 |1\\rangle \\rightarrow |0\\rangle
-$. Brána **CNOT** však preklopí cieľový qubit iba vtedy, keď je riadiaci qubit rovný $|1\\rangle$. Zaujímavá je situácia, kedy control qubit je vo superpozíí stavo $|0\\rangle$ a $|1\\rangle$. V tedy sa ten CNOT aj vykoná aj nevykoná zároveň, a druhý qubit bude vo superpozicí. Vznikne tak entanglemet medzi týmito dvoma qubitmi, a už ich nemôžno považovať za samostatné qubity, majú jeden spoločný stav.
+$.
+The **CNOT** gate, however, flips the target qubit only when the control qubit is equal to $|1\\rangle$. An interesting situation appears when the control qubit is in a superposition of the states $|0\\rangle$ and $|1\\rangle$. Then the CNOT is both executed and not executed at the same time, and the second qubit will be in superposition. This creates entanglement between the two qubits, and they can no longer be considered separate qubits. They share one common state.
 
-Brána **CNOT** však preklopí cieľový qubit iba vtedy, keď je riadiaci qubit rovný $|1\\rangle$. Zaujímavá situácia nastáva vtedy, keď je **riadiaci qubit** v superpozícii stavov $|0\\rangle$ a $|1\\rangle$.
-V takom prípade sa dá zjednodušene povedať, že brána **CNOT** sa **zároveň vykoná aj nevykoná**. Cieľový qubit sa teda dostane do stavu, ktorý závisí od stavu riadiaceho qubitu, ktorý je však vo superpozícíí.
-To znamená, že tieto dva qubity už nemôžeme úplne považovať za samostatné nezávislé qubity. Namiesto toho majú jeden spoločný kvantový stav.
+The **CNOT** gate flips the target qubit only when the **control qubit** is equal to $|1\\rangle$. An interesting situation occurs when the control qubit is in a superposition of the states $|0\\rangle$ and $|1\\rangle$.
+In that case, we can say in a simplified way that the **CNOT** gate is **both applied and not applied at the same time**. The target qubit then enters a state that depends on the state of the control qubit, which is itself in superposition.
+That means that we can no longer fully regard these two qubits as separate independent qubits. Instead, they share one common quantum state.
 
-Preto je CNOT veľmi dôležitá pri práci s viacerými qubitmi a používa sa napríklad na vytváranie previazanosti, teda **entanglementu**.
+That is why CNOT is very important when working with multiple qubits, and it is used, for example, to create entanglement.
 
 ---
 
-## Výsledné stavy po aplikovaní jednokubitových brán
+## Resulting states after applying single-qubit gates
 
-V tejto tabuľke vidíme, čo sa stane s qubitom, ak je vstupný stav $|0\\rangle$ alebo $|1\\rangle$ a aplikujeme naň danú bránu.
+In this table, we can see what happens to a qubit when the input state is $|0\\rangle$ or $|1\\rangle$ and we apply a given gate to it.
 
-| Brána | Vstupný stav | Výsledný stav |
+| Gate | Input state | Resulting state |
 |---|---|---|
 | **X** | $\\lvert 0 \\rangle$ | $\\lvert 1 \\rangle$ |
 | **X** | $\\lvert 1 \\rangle$ | $\\lvert 0 \\rangle$ |
@@ -505,290 +488,257 @@ V tejto tabuľke vidíme, čo sa stane s qubitom, ak je vstupný stav $|0\\rangl
 
 ---
 
-## 12. Výsledné stavy po aplikovaní brány CNOT
+## Resulting states after applying the CNOT gate
 
-Brána CNOT je dvojqubitová, preto pri nej nemáme iba vstupy $|0\\rangle$ a $|1\\rangle$, ale dvojqubitové vstupy:
-$\\lvert 1 \\rangle$
+The CNOT gate is a two-qubit gate, so we do not have only the inputs $|0\\rangle$ and $|1\\rangle$, but the two-qubit inputs:
+
 $$
 |00\\rangle, |01\\rangle, |10\\rangle, |11\\rangle
 $$
 
-| Brána | Vstupný stav | Výsledný stav |
+| Gate | Input state | Resulting state |
 |---|---|---|
 | **CNOT** | $\\lvert00\\rangle$ | $\\lvert00\\rangle$ |
 | **CNOT** | $\\lvert01\\rangle$ | $\\lvert01\\rangle$ |
 | **CNOT** | $\\lvert10\\rangle$ | $\\lvert11\\rangle$ |
 | **CNOT** | $\\lvert11\\rangle$ | $\\lvert10\\rangle$ |
 
-Pri tejto tabuľke platí:
+For this table, the following applies:
 
-- prvý qubit je **control**,
-- druhý qubit je **target**.
+- the first qubit is the **control**,
+- the second qubit is the **target**.
 
-To znamená, že druhý qubit sa preklopí iba vtedy, keď je prvý qubit v stave $|1\\rangle$.
-
-
+That means the second qubit flips only when the first qubit is in the state $|1\\rangle$.
 `,
-  images: [
-    {
-      src: bellCircuitIllustration,
-      alt: "Jednoduchý Bell-state circuit",
-      caption: "Jedna z klasických ukážok v Qiskite: Hadamard + CNOT + meranie.",
-    },
-  ],
   questions: [
-    
-
-  {
-    id: "q1",
-    type: "short-answer",
-    prompt: "Zápis ∣0⟩ a ∣1⟩ sa volá Diracova __________.",
-    correctAnswer: ["notácia", "notacia"],
-    explanation: "",
-  },
-
-  {
-    id: "q2",
-    type: "multiple-choice",
-    prompt: "Qubit môže byť:",
-    options: [
-      "iba v stave ∣0⟩",
-      "iba v stave ∣1⟩",
-      "v stave ∣0⟩, ∣1⟩ alebo v ich superpozícii",
-      "iba klasická nula alebo jednotka",
-    ],
-    correctAnswer: "v stave ∣0⟩, ∣1⟩ alebo v ich superpozícii",
-    explanation: "",
-  },
-
-  {
-    id: "q3",
-    type: "multiple-choice",
-    prompt: "Hodnoty α a β určujú:",
-    options: [
-      "pravdepodobnosti výsledkov merania",
-      "počet kvantových brán",
-      "typ Blochovej sféry",
-      "počet klasických bitov",
-    ],
-    correctAnswer: "pravdepodobnosti výsledkov merania",
-    explanation: "",
-  },
-
-  {
-    id: "q4",
-    type: "short-answer",
-    prompt: "Kvantové operácie sa častejšie nazývajú kvantové __________.",
-    correctAnswer: ["brány", "brany"],
-    explanation: "",
-  },
-
-  {
-    id: "q5",
-    type: "multiple-choice",
-    prompt: "Kvantová brána mení:",
-    options: [
-      "stav qubitu",
-      "farbu qubitu",
-      "názov qubitu",
-      "počet osí v priestore",
-    ],
-    correctAnswer: "stav qubitu",
-    explanation: "",
-  },
-
-  {
-    id: "q6",
-    type: "multiple-choice",
-    prompt: "Pravda alebo nepravda: Kvantové brány sa často zapisujú ako matice.",
-    options: [
-      "Pravda",
-      "Nepravda",
-    ],
-    correctAnswer: "Pravda",
-    explanation: "",
-  },
-
-  {
-    id: "q7",
-    type: "multiple-choice",
-    prompt: "Stav qubit môžeme matematicky chápať ako:",
-    options: [
-      "vektor",
-      "tabuľku",
-      "obyčajné celé číslo",
-      "klasickú logickú bránu",
-    ],
-    correctAnswer: "vektor",
-    explanation: "",
-  },
-
-  {
-    id: "q8",
-    type: "multiple-choice",
-    prompt: "Na Blochovej sfére si kvantové brány môžeme intuitívne predstaviť ako:",
-    options: [
-      "rotácie stavu qubitu",
-      "mazanie stavu qubitu",
-      "meranie qubitu",
-      "kopírovanie qubitu",
-    ],
-    correctAnswer: "rotácie stavu qubitu",
-    explanation: "",
-  },
-
-  {
-    id: "q9",
-    type: "multiple-choice",
-    prompt: "Brány X, Y a Z zodpovedajú rotáciám o:",
-    options: [
-      "90°",
-      "180°",
-      "270°",
-      "360°",
-    ],
-    correctAnswer: "180°",
-    explanation: "",
-  },
-
-  {
-    id: "q10",
-    type: "short-answer",
-    prompt: "Rotácia o 180° zodpovedá uhlu __________ radiánov.",
-    correctAnswer: ["π", "pi"],
-    explanation: "",
-  },
-
-  {
-    id: "q11",
-    type: "multiple-choice",
-    prompt: "Rotačné brány Rx(θ), Ry(θ), Rz(θ) umožňujú:",
-    options: [
-      "rotáciu o ľubovoľný uhol θ",
-      "iba rotáciu o 180°",
-      "iba meranie qubitu",
-      "iba vytvorenie dvoch qubitov",
-    ],
-    correctAnswer: "rotáciu o ľubovoľný uhol θ",
-    explanation: "",
-  },
-
-  {
-    id: "q12",
-    type: "multiple-choice",
-    prompt: "Stav ∣0⟩ je reprezentovaný ako stĺpcový vektor:",
-    options: [
-      "[1, 0]ᵀ",
-      "[0, 1]ᵀ",
-      "[1, 1]ᵀ",
-      "[0, 0]ᵀ",
-    ],
-    correctAnswer: "[1, 0]ᵀ",
-    explanation: "",
-  },
-
-  {
-    id: "q13",
-    type: "multiple-choice",
-    prompt: "Na Blochovej sfére stav ∣1⟩ smeruje:",
-    options: [
-      "hore na severný pól",
-      "dole na južný pól",
-      "na kladnú os X",
-      "mimo sféru",
-    ],
-    correctAnswer: "dole na južný pól",
-    explanation: "",
-  },
-
-  {
-    id: "q14",
-    type: "multiple-choice",
-    prompt: "Brána X je kvantová verzia klasickej brány:",
-    options: [
-      "NOT",
-      "AND",
-      "OR",
-      "CNOT",
-    ],
-    correctAnswer: "NOT",
-    explanation: "",
-  },
-
-  {
-    id: "q15",
-    type: "multiple-choice",
-    prompt: "Čo urobí brána Z so stavom ∣1⟩?",
-    options: [
-      "zmení ho na -∣1⟩",
-      "zmení ho na ∣0⟩",
-      "zmení ho na ∣1⟩ + ∣0⟩",
-      "zničí qubit",
-    ],
-    correctAnswer: "zmení ho na -∣1⟩",
-    explanation: "",
-  },
-
-  {
-    id: "q16",
-    type: "multiple-choice",
-    prompt: "Pravda alebo nepravda: Brána Hadamard sa používa najmä na vytvorenie superpozície.",
-    options: [
-      "Pravda",
-      "Nepravda",
-    ],
-    correctAnswer: "Pravda",
-    explanation: "",
-  },
-
-  {
-    id: "q17",
-    type: "short-answer",
-    prompt: "Pre imaginárnu jednotku i platí i² = __________.",
-    correctAnswer: ["-1"],
-    explanation: "",
-  },
-
-  {
-    id: "q18",
-    type: "multiple-choice",
-    prompt: "Brána CNOT pôsobí na:",
-    options: [
-      "jeden qubit",
-      "dva qubity",
-      "iba klasické bity",
-      "tri qubity",
-    ],
-    correctAnswer: "dva qubity",
-    explanation: "",
-  },
-
-  {
-    id: "q19",
-    type: "multiple-choice",
-    prompt: "CNOT preklopí cieľový qubit vtedy, keď je riadiaci qubit v stave:",
-    options: [
-      "∣0⟩",
-      "∣1⟩",
-    ],
-    correctAnswer: "∣1⟩",
-    explanation: "",
-  },
-
-  {
-    id: "q20",
-    type: "multiple-choice",
-    prompt: "Pravda alebo nepravda: CNOT môže vytvárať entanglement medzi qubitmi.",
-    options: [
-      "Pravda",
-      "Nepravda",
-    ],
-    correctAnswer: "Pravda",
-    explanation: "",
-  },
-
-
-  
+    // {
+    //   id: "q1",
+    //   type: "short-answer",
+    //   prompt: "The notation ∣0⟩ and ∣1⟩ is called Dirac __________.",
+    //   correctAnswer: ["notation"],
+    //   explanation: "",
+    // },
+    {
+      id: "q2",
+      type: "multiple-choice",
+      prompt: "A qubit can be:",
+      options: [
+        "only in the state ∣0⟩",
+        "only in the state ∣1⟩",
+        "in the state ∣0⟩, ∣1⟩, or in their superposition",
+        "only a classical zero or one",
+      ],
+      correctAnswer: "in the state ∣0⟩, ∣1⟩, or in their superposition",
+      explanation: "",
+    },
+    {
+      id: "q3",
+      type: "multiple-choice",
+      prompt: "The values α and β determine:",
+      options: [
+        "the probabilities of measurement outcomes",
+        "the number of quantum gates",
+        "the type of Bloch sphere",
+        "the number of classical bits",
+      ],
+      correctAnswer: "the probabilities of measurement outcomes",
+      explanation: "",
+    },
+    // {
+    //   id: "q4",
+    //   type: "short-answer",
+    //   prompt: "Quantum operations are more commonly called quantum __________.",
+    //   correctAnswer: ["gates", "gate"],
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q5",
+    //   type: "multiple-choice",
+    //   prompt: "A quantum gate changes:",
+    //   options: [
+    //     "the state of a qubit",
+    //     "the color of a qubit",
+    //     "the name of a qubit",
+    //     "the number of axes in space",
+    //   ],
+    //   correctAnswer: "the state of a qubit",
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q6",
+    //   type: "multiple-choice",
+    //   prompt: "True or false: Quantum gates are often written as matrices.",
+    //   options: [
+    //     "True",
+    //     "False",
+    //   ],
+    //   correctAnswer: "True",
+    //   explanation: "",
+    // },
+    {
+      id: "q7",
+      type: "multiple-choice",
+      prompt: "The state of a qubit can be understood mathematically as a:",
+      options: [
+        "vector",
+        "table",
+        "ordinary integer",
+        "classical logic gate",
+      ],
+      correctAnswer: "vector",
+      explanation: "",
+    },
+    // {
+    //   id: "q8",
+    //   type: "multiple-choice",
+    //   prompt: "On the Bloch sphere, we can intuitively imagine quantum gates as:",
+    //   options: [
+    //     "rotations of the qubit state",
+    //     "deleting the qubit state",
+    //     "measuring the qubit",
+    //     "copying the qubit",
+    //   ],
+    //   correctAnswer: "rotations of the qubit state",
+    //   explanation: "",
+    // },
+    {
+      id: "q9",
+      type: "multiple-choice",
+      prompt: "The X, Y, and Z gates correspond to rotations by:",
+      options: [
+        "90°",
+        "180°",
+        "270°",
+        "360°",
+      ],
+      correctAnswer: "180°",
+      explanation: "",
+    },
+    // {
+    //   id: "q10",
+    //   type: "short-answer",
+    //   prompt: "A rotation by 180° corresponds to an angle of __________ radians.",
+    //   correctAnswer: ["π", "pi"],
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q11",
+    //   type: "multiple-choice",
+    //   prompt: "The rotation gates Rx(θ), Ry(θ), and Rz(θ) allow:",
+    //   options: [
+    //     "rotation by any angle θ",
+    //     "only rotation by 180°",
+    //     "only measurement of a qubit",
+    //     "only the creation of two qubits",
+    //   ],
+    //   correctAnswer: "rotation by any angle θ",
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q12",
+    //   type: "multiple-choice",
+    //   prompt: "The state ∣0⟩ is represented as the column vector:",
+    //   options: [
+    //     "[1, 0]ᵀ",
+    //     "[0, 1]ᵀ",
+    //     "[1, 1]ᵀ",
+    //     "[0, 0]ᵀ",
+    //   ],
+    //   correctAnswer: "[1, 0]ᵀ",
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q13",
+    //   type: "multiple-choice",
+    //   prompt: "On the Bloch sphere, the state ∣1⟩ points:",
+    //   options: [
+    //     "up to the north pole",
+    //     "down to the south pole",
+    //     "to the positive X axis",
+    //     "outside the sphere",
+    //   ],
+    //   correctAnswer: "down to the south pole",
+    //   explanation: "",
+    // },
+    {
+      id: "q14",
+      type: "multiple-choice",
+      prompt: "The X gate is the quantum version of the classical gate:",
+      options: [
+        "NOT",
+        "AND",
+        "OR",
+        "CNOT",
+      ],
+      correctAnswer: "NOT",
+      explanation: "",
+    },
+    {
+      id: "q15",
+      type: "multiple-choice",
+      prompt: "What does the Z gate do to the state ∣1⟩?",
+      options: [
+        "it changes it to -∣1⟩",
+        "it changes it to ∣0⟩",
+        "it changes it to ∣1⟩ + ∣0⟩",
+        "it destroys the qubit",
+      ],
+      correctAnswer: "it changes it to -∣1⟩",
+      explanation: "",
+    },
+    // {
+    //   id: "q16",
+    //   type: "multiple-choice",
+    //   prompt: "True or false: The Hadamard gate is used mainly to create superposition.",
+    //   options: [
+    //     "True",
+    //     "False",
+    //   ],
+    //   correctAnswer: "True",
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q17",
+    //   type: "short-answer",
+    //   prompt: "For the imaginary unit i, we have i² = __________.",
+    //   correctAnswer: ["-1"],
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q18",
+    //   type: "multiple-choice",
+    //   prompt: "The CNOT gate acts on:",
+    //   options: [
+    //     "one qubit",
+    //     "two qubits",
+    //     "only classical bits",
+    //     "three qubits",
+    //   ],
+    //   correctAnswer: "two qubits",
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q19",
+    //   type: "multiple-choice",
+    //   prompt: "CNOT flips the target qubit when the control qubit is in the state:",
+    //   options: [
+    //     "∣0⟩",
+    //     "∣1⟩",
+    //   ],
+    //   correctAnswer: "∣1⟩",
+    //   explanation: "",
+    // },
+    // {
+    //   id: "q20",
+    //   type: "multiple-choice",
+    //   prompt: "True or false: CNOT can create entanglement between qubits.",
+    //   options: [
+    //     "True",
+    //     "False",
+    //   ],
+    //   correctAnswer: "True",
+    //   explanation: "",
+    // },
   ],
   showEditor: true,
   starterCode: `import sys
@@ -802,11 +752,10 @@ try:
     circuit.cx(0, 1)
     circuit.measure([0, 1], [0, 1])
     print("Qiskit import OK")
-    print(circuit)
+    display(circuit.draw("mpl"))
 except Exception as error:
     print("Qiskit import failed:", error)
 `,
 };
-
 
 export default qiskitFirstCircuitLesson;
