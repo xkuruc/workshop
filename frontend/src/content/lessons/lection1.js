@@ -141,19 +141,19 @@ At the end of this lesson, try to notice that superposition is not the same as m
       correctAnswer: "The qubit is reduced to one measured value",
       explanation: "",
     },
-    {
-      id: "q6",
-      type: "multiple-choice",
-      prompt: "What does entanglement mean?",
-      options: [
-        "A phenomenon in which a qubit loses all of its energy",
-        "A phenomenon in which the state of one qubit affects another qubit",
-        "A process in which a quantum computer turns into a classical one",
-        "A method for cooling a quantum processor",
-      ],
-      correctAnswer: "A phenomenon in which the state of one qubit affects another qubit",
-      explanation: "",
-    },
+    // {
+    //   id: "q6",
+    //   type: "multiple-choice",
+    //   prompt: "What does entanglement mean?",
+    //   options: [
+    //     "A phenomenon in which a qubit loses all of its energy",
+    //     "A phenomenon in which the state of one qubit affects another qubit",
+    //     "A process in which a quantum computer turns into a classical one",
+    //     "A method for cooling a quantum processor",
+    //   ],
+    //   correctAnswer: "A phenomenon in which the state of one qubit affects another qubit",
+    //   explanation: "",
+    // },
     // {
     //   id: "q7",
     //   type: "short-answer",
@@ -161,19 +161,19 @@ At the end of this lesson, try to notice that superposition is not the same as m
     //   correctAnswer: ["collapses", "collapse"],
     //   explanation: "",
     // },
-    {
-      id: "q8",
-      type: "multiple-choice",
-      prompt: "Why are quantum computations performed before measurement rather than after it?",
-      options: [
-        "Because after measurement the qubit can no longer remain in its original superposition",
-        "Because a quantum computer stops existing after measurement",
-        "Because measurement always returns all possible results at once",
-        "Because measurement is possible only on classical bits",
-      ],
-      correctAnswer: "Because after measurement the qubit can no longer remain in its original superposition",
-      explanation: "",
-    },
+    // {
+    //   id: "q8",
+    //   type: "multiple-choice",
+    //   prompt: "Why are quantum computations performed before measurement rather than after it?",
+    //   options: [
+    //     "Because after measurement the qubit can no longer remain in its original superposition",
+    //     "Because a quantum computer stops existing after measurement",
+    //     "Because measurement always returns all possible results at once",
+    //     "Because measurement is possible only on classical bits",
+    //   ],
+    //   correctAnswer: "Because after measurement the qubit can no longer remain in its original superposition",
+    //   explanation: "",
+    // },
     {
       id: "q9",
       type: "multiple-choice",
@@ -200,19 +200,7 @@ At the end of this lesson, try to notice that superposition is not the same as m
       correctAnswer: "A quantum computer is only a more powerful version of a classical computer for regular applications",
       explanation: "",
     },
-    {
-      id: "normalization",
-      type: "multiple-choice",
-      prompt: "Which equation must hold for a valid one-qubit state?",
-      options: [
-        "|α|² + |β|² = 1",
-        "|α| + |β| = 1",
-        "α + β = 0",
-        "|α|² - |β|² = 1",
-      ],
-      correctAnswer: "|α|² + |β|² = 1",
-      explanation: "Normalization guarantees that the total probability of all outcomes is equal to 1.",
-    },
+    
     // {
     //   id: "superposition-word",
     //   type: "short-answer",

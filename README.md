@@ -40,43 +40,40 @@ You do **not** need a cloud account.
 
 You **do** need:
 
-- this project folder on your computer
+- Git
 - Python 3
 - Node.js
 - npm
 
 Important:
 
+- Git is used to download the project from GitHub.
 - `npm` is installed together with Node.js. You do **not** need to install npm separately.
-- Tool versions change over time. As of **May 10, 2026**, the official Python download pages list **Python 3.14.4** as the latest Python 3 release, and the official Node.js download page lists **Node.js v24.15.0 LTS**.
+- Tool versions change over time. As of **May 11, 2026**, the official Python download pages list **Python 3.14.4** as the latest Python 3 release, and the official Node.js download page lists **Node.js v24.15.0 LTS**.
 - If those official pages show a newer stable version when you read this, use the newer stable version unless one of your packages documents a stricter requirement.
 
-## Where to put the project folder
+## GitHub repository
 
-For the commands below, I assume:
+The full project code is hosted here:
 
-- macOS: the project folder is at `~/ECHUB_moj`
-- Windows: the project folder is at `C:\ECHUB_moj`
+[https://github.com/xkuruc/workshop](https://github.com/xkuruc/workshop)
 
-If your folder is somewhere else, that is fine. Just change the `cd` path and the Python executable path later in the app settings.
+In the exact commands below, we clone it into a local folder named `workshop`.
 
-## Get the project onto the computer
+## Where the project folder will be created
 
-You need the project folder on the machine before you run any commands.
+For the commands below, I assume the cloned project ends up here:
 
-If someone gave you a ZIP file:
+- macOS: `~/workshop`
+- Windows: `C:\workshop`
 
-1. Download the ZIP.
-2. Extract it.
-3. Rename the extracted folder to `ECHUB_moj` if needed.
-4. Move it to:
-   - macOS: your home folder, so the final path is `~/ECHUB_moj`
-   - Windows: the root of drive `C:`, so the final path is `C:\ECHUB_moj`
-
-If someone gave you the folder directly, just copy it there.
+If you clone it somewhere else, that is fine. Just change the `cd` path and the Python executable path later in the app settings.
 
 ## Official download links
 
+- Git downloads: [git-scm.com/downloads](https://git-scm.com/downloads)
+- Git installation guide: [Git Book - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- GitHub cloning guide: [GitHub Docs - Cloning a repository](https://docs.github.com/articles/cloning-a-repository?tool=cli)
 - Python for macOS: [python.org/downloads/macos](https://www.python.org/downloads/macos/)
 - Python for Windows: [python.org/downloads/windows](https://www.python.org/downloads/windows/)
 - Node.js download page: [nodejs.org/en/download](https://nodejs.org/en/download)
@@ -86,11 +83,56 @@ If someone gave you the folder directly, just copy it there.
 - Matplotlib install guide: [matplotlib.org/stable/install/index.html](https://matplotlib.org/stable/install/index.html)
 - pylatexenc package: [PyPI - pylatexenc](https://pypi.org/project/pylatexenc/)
 
+## How to get the project code onto the computer
+
+The main recommended method is to install Git and clone the repository from GitHub.
+
+Exact clone command used in this README:
+
+```bash
+git clone https://github.com/xkuruc/workshop.git workshop
+```
+
+If you do not want to use Git, there is also a ZIP fallback:
+
+1. Open [https://github.com/xkuruc/workshop](https://github.com/xkuruc/workshop)
+2. Click `Code`
+3. Click `Download ZIP`
+4. Extract the ZIP
+5. Rename the extracted folder to `workshop` if needed
+6. Move it to:
+   - macOS: your home folder so the final path is `~/workshop`
+   - Windows: drive `C:` so the final path is `C:\workshop`
+
 ---
 
 ## Full setup from zero on macOS
 
-### 1. Install Python on macOS
+### 1. Install Git on macOS
+
+1. Open [git-scm.com/download/mac](https://git-scm.com/download/mac).
+2. Download the macOS Git installer.
+3. Open the downloaded installer package.
+4. Click through the installer and finish the installation.
+5. Open a **new** Terminal window.
+
+Verify the installation:
+
+```bash
+git --version
+```
+
+### 2. Download the project from GitHub on macOS
+
+Open Terminal and run:
+
+```bash
+cd ~
+git clone https://github.com/xkuruc/workshop.git workshop
+cd ~/workshop
+```
+
+### 3. Install Python on macOS
 
 1. Open [python.org/downloads/macos](https://www.python.org/downloads/macos/).
 2. Download the latest **Python 3 macOS installer**.
@@ -109,7 +151,7 @@ python3 -m pip --version
 
 You should see a Python 3 version and a pip version.
 
-### 2. Install Node.js and npm on macOS
+### 4. Install Node.js and npm on macOS
 
 1. Open [nodejs.org/en/download](https://nodejs.org/en/download).
 2. Download the **LTS** version, not the Current version.
@@ -127,12 +169,12 @@ npm -v
 
 You should see both a Node.js version and an npm version.
 
-### 3. Create a Python virtual environment
+### 5. Create a Python virtual environment
 
 Open Terminal and run:
 
 ```bash
-cd ~/ECHUB_moj
+cd ~/workshop
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
@@ -140,21 +182,21 @@ python -m pip install --upgrade pip
 
 After activation, your terminal usually shows something like `(.venv)` at the beginning of the line.
 
-### 4. Install backend dependencies
+### 6. Install backend dependencies
 
 Still in the same Terminal window, run:
 
 ```bash
-cd ~/ECHUB_moj
+cd ~/workshop
 python -m pip install -r backend/requirements.txt
 ```
 
-### 5. Install Qiskit and all required Python libraries
+### 7. Install Qiskit and all required Python libraries
 
 Still in the same activated virtual environment, run:
 
 ```bash
-cd ~/ECHUB_moj
+cd ~/workshop
 python -m pip install "qiskit[visualization]" qiskit-aer matplotlib pylatexenc
 ```
 
@@ -164,21 +206,21 @@ Optional but useful for notebook-style local work:
 python -m pip install jupyter
 ```
 
-### 6. Install frontend dependencies
+### 8. Install frontend dependencies
 
 Still in Terminal, run:
 
 ```bash
-cd ~/ECHUB_moj/frontend
+cd ~/workshop/frontend
 npm install
 ```
 
-### 7. Start the backend
+### 9. Start the backend
 
 From the project root:
 
 ```bash
-cd ~/ECHUB_moj
+cd ~/workshop
 source .venv/bin/activate
 ./start_backend.sh
 ```
@@ -186,54 +228,54 @@ source .venv/bin/activate
 If the script does not run for any reason, use the exact fallback command:
 
 ```bash
-cd ~/ECHUB_moj
+cd ~/workshop
 source .venv/bin/activate
 python -m uvicorn backend.app:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-### 8. Start the frontend
+### 10. Start the frontend
 
 Open a **second** Terminal window and run:
 
 ```bash
-cd ~/ECHUB_moj
+cd ~/workshop
 ./start_frontend.sh
 ```
 
 If the script does not run for any reason, use the exact fallback command:
 
 ```bash
-cd ~/ECHUB_moj/frontend
+cd ~/workshop/frontend
 npm run dev
 ```
 
-### 9. Open the app
+### 11. Open the app
 
 Open these URLs in your browser:
 
 - Frontend: [http://127.0.0.1:5173](http://127.0.0.1:5173)
 - Backend health: [http://127.0.0.1:8000/health](http://127.0.0.1:8000/health)
 
-### 10. Set the Python interpreter inside the app
+### 12. Set the Python interpreter inside the app
 
 In the app's `Execution Settings`, set:
 
 - `Python executable` to:
 
 ```text
-/Users/<your-mac-username>/ECHUB_moj/.venv/bin/python
+/Users/<your-mac-username>/workshop/.venv/bin/python
 ```
 
 If you used the exact folder from this README and your macOS home folder shortcut, that is usually:
 
 ```text
-~/ECHUB_moj/.venv/bin/python
+~/workshop/.venv/bin/python
 ```
 
 - `Working directory` to:
 
 ```text
-/Users/<your-mac-username>/ECHUB_moj
+/Users/<your-mac-username>/workshop
 ```
 
 - `Timeout` to something like:
@@ -242,7 +284,7 @@ If you used the exact folder from this README and your macOS home folder shortcu
 20
 ```
 
-### 11. Verify that the app is using the correct Python
+### 13. Verify that the app is using the correct Python
 
 Paste this into the editor:
 
@@ -255,12 +297,12 @@ Click `Run`.
 
 The printed path should point to your `.venv` Python.
 
-### 12. Verify that Qiskit, Aer, Matplotlib, and pylatexenc are installed
+### 14. Verify that Qiskit, Aer, Matplotlib, and pylatexenc are installed
 
 In the activated virtual environment, run:
 
 ```bash
-cd ~/ECHUB_moj
+cd ~/workshop
 python -m pip show qiskit
 python -m pip show qiskit-aer
 python -m pip show matplotlib
@@ -289,7 +331,32 @@ PY
 
 For the easiest beginner setup on Windows, use **Command Prompt** instead of PowerShell.
 
-### 1. Install Python on Windows
+### 1. Install Git on Windows
+
+1. Open [git-scm.com/download/win](https://git-scm.com/download/win).
+2. Download the Windows Git installer.
+3. Run the installer.
+4. Keep the default options unless your IT department requires something different.
+5. Finish the installation.
+6. Open a **new** Command Prompt window.
+
+Verify the installation:
+
+```bat
+git --version
+```
+
+### 2. Download the project from GitHub on Windows
+
+Open Command Prompt and run:
+
+```bat
+cd /d C:\
+git clone https://github.com/xkuruc/workshop.git workshop
+cd /d C:\workshop
+```
+
+### 3. Install Python on Windows
 
 1. Open [python.org/downloads/windows](https://www.python.org/downloads/windows/).
 2. Open the latest Python 3 release page.
@@ -309,7 +376,7 @@ py -m pip --version
 
 If `python` does not work but `py` does, that is still okay.
 
-### 2. Install Node.js and npm on Windows
+### 4. Install Node.js and npm on Windows
 
 1. Open [nodejs.org/en/download](https://nodejs.org/en/download).
 2. Download the **LTS** version, not the Current version.
@@ -326,12 +393,12 @@ node -v
 npm -v
 ```
 
-### 3. Create a Python virtual environment
+### 5. Create a Python virtual environment
 
 Open Command Prompt and run:
 
 ```bat
-cd /d C:\ECHUB_moj
+cd /d C:\workshop
 py -m venv .venv
 .venv\Scripts\activate.bat
 python -m pip install --upgrade pip
@@ -339,21 +406,21 @@ python -m pip install --upgrade pip
 
 After activation, your prompt usually begins with `(.venv)`.
 
-### 4. Install backend dependencies
+### 6. Install backend dependencies
 
 Still in the same Command Prompt window, run:
 
 ```bat
-cd /d C:\ECHUB_moj
+cd /d C:\workshop
 python -m pip install -r backend\requirements.txt
 ```
 
-### 5. Install Qiskit and all required Python libraries
+### 7. Install Qiskit and all required Python libraries
 
 Still in the same activated virtual environment, run:
 
 ```bat
-cd /d C:\ECHUB_moj
+cd /d C:\workshop
 python -m pip install "qiskit[visualization]" qiskit-aer matplotlib pylatexenc
 ```
 
@@ -363,21 +430,21 @@ Optional but useful for notebook-style local work:
 python -m pip install jupyter
 ```
 
-### 6. Install frontend dependencies
+### 8. Install frontend dependencies
 
 Still in Command Prompt, run:
 
 ```bat
-cd /d C:\ECHUB_moj\frontend
+cd /d C:\workshop\frontend
 npm install
 ```
 
-### 7. Start the backend
+### 9. Start the backend
 
 From the project root:
 
 ```bat
-cd /d C:\ECHUB_moj
+cd /d C:\workshop
 .venv\Scripts\activate.bat
 start_backend.bat
 ```
@@ -385,48 +452,48 @@ start_backend.bat
 If the script does not run for any reason, use the exact fallback command:
 
 ```bat
-cd /d C:\ECHUB_moj
+cd /d C:\workshop
 .venv\Scripts\activate.bat
 py -m uvicorn backend.app:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-### 8. Start the frontend
+### 10. Start the frontend
 
 Open a **second** Command Prompt window and run:
 
 ```bat
-cd /d C:\ECHUB_moj
+cd /d C:\workshop
 start_frontend.bat
 ```
 
 If the script does not run for any reason, use the exact fallback command:
 
 ```bat
-cd /d C:\ECHUB_moj\frontend
+cd /d C:\workshop\frontend
 npm run dev
 ```
 
-### 9. Open the app
+### 11. Open the app
 
 Open these URLs in your browser:
 
 - Frontend: [http://127.0.0.1:5173](http://127.0.0.1:5173)
 - Backend health: [http://127.0.0.1:8000/health](http://127.0.0.1:8000/health)
 
-### 10. Set the Python interpreter inside the app
+### 12. Set the Python interpreter inside the app
 
 In the app's `Execution Settings`, set:
 
 - `Python executable` to:
 
 ```text
-C:\ECHUB_moj\.venv\Scripts\python.exe
+C:\workshop\.venv\Scripts\python.exe
 ```
 
 - `Working directory` to:
 
 ```text
-C:\ECHUB_moj
+C:\workshop
 ```
 
 - `Timeout` to something like:
@@ -435,7 +502,7 @@ C:\ECHUB_moj
 20
 ```
 
-### 11. Verify that the app is using the correct Python
+### 13. Verify that the app is using the correct Python
 
 Paste this into the editor:
 
@@ -448,12 +515,12 @@ Click `Run`.
 
 The printed path should point to your `.venv` Python.
 
-### 12. Verify that Qiskit, Aer, Matplotlib, and pylatexenc are installed
+### 14. Verify that Qiskit, Aer, Matplotlib, and pylatexenc are installed
 
 In the activated virtual environment, run:
 
 ```bat
-cd /d C:\ECHUB_moj
+cd /d C:\workshop
 python -m pip show qiskit
 python -m pip show qiskit-aer
 python -m pip show matplotlib
@@ -538,7 +605,7 @@ C:\Users\yourname\project\.venv\Scripts\python.exe
 ## Project structure
 
 ```text
-ECHUB_moj/
+workshop/
 ├── backend/
 │   ├── app.py
 │   ├── completion_service.py
@@ -689,7 +756,7 @@ Fix it like this:
 macOS:
 
 ```bash
-cd ~/ECHUB_moj/frontend
+cd ~/workshop/frontend
 rm -rf node_modules package-lock.json
 npm install
 ```
@@ -697,7 +764,7 @@ npm install
 Windows Command Prompt:
 
 ```bat
-cd /d C:\ECHUB_moj\frontend
+cd /d C:\workshop\frontend
 rmdir /s /q node_modules
 del package-lock.json
 npm install
@@ -708,7 +775,7 @@ npm install
 Use Command Prompt instead:
 
 ```bat
-cd /d C:\ECHUB_moj
+cd /d C:\workshop
 .venv\Scripts\activate.bat
 ```
 

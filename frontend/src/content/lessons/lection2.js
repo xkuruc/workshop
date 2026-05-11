@@ -131,6 +131,19 @@ P(|1\\rangle) = |\\frac{i \\sqrt{3}}{2}|² = 75 \\%
 $$
 `,
   questions: [
+    {
+      id: "normalization",
+      type: "multiple-choice",
+      prompt: "Which equation must hold for a valid one-qubit state?",
+      options: [
+        "|α|² + |β|² = 1",
+        "|α| + |β| = 1",
+        "α + β = 0",
+        "|α|² - |β|² = 1",
+      ],
+      correctAnswer: "|α|² + |β|² = 1",
+      explanation: "Normalization guarantees that the total probability of all outcomes is equal to 1.",
+    },
     // {
     //   id: "q1",
     //   type: "multiple-choice",
